@@ -698,6 +698,7 @@ GameObject:
   - component: {fileID: 879637638}
   - component: {fileID: 879637637}
   - component: {fileID: 879637640}
+  - component: {fileID: 879637641}
   m_Layer: 0
   m_Name: Enemy_M
   m_TagString: Enemy
@@ -715,7 +716,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.05, y: 0}
@@ -817,6 +818,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &879637641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879637636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e310b9336b35c44ea80cac4bff675f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  hp: 30
+  sprites:
+  - {fileID: -7642239419928554605, guid: b985a72683952c546a4ec9ff80d013b2, type: 3}
+  - {fileID: 6294125324160034484, guid: 9143cc8d719bcd249a1a72457f334fc4, type: 3}
 --- !u!1 &1071484800
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +960,7 @@ GameObject:
   - component: {fileID: 1357850866}
   - component: {fileID: 1357850865}
   - component: {fileID: 1357850868}
+  - component: {fileID: 1357850869}
   m_Layer: 0
   m_Name: Enemy_S
   m_TagString: Enemy
@@ -959,7 +978,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03, y: 0}
@@ -1051,6 +1070,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1357850869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357850864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e310b9336b35c44ea80cac4bff675f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  hp: 15
+  sprites:
+  - {fileID: 8596640243658272642, guid: b985a72683952c546a4ec9ff80d013b2, type: 3}
+  - {fileID: 7942249098920568159, guid: 9143cc8d719bcd249a1a72457f334fc4, type: 3}
 --- !u!1 &1510994744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1178,7 @@ GameObject:
   - component: {fileID: 1676111317}
   - component: {fileID: 1676111316}
   - component: {fileID: 1676111319}
+  - component: {fileID: 1676111320}
   m_Layer: 0
   m_Name: Enemy_L
   m_TagString: Enemy
@@ -1159,7 +1196,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1261,6 +1298,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1676111320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676111315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e310b9336b35c44ea80cac4bff675f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  hp: 100
+  sprites:
+  - {fileID: -3876759189950653258, guid: b985a72683952c546a4ec9ff80d013b2, type: 3}
+  - {fileID: 5845606359538220865, guid: 9143cc8d719bcd249a1a72457f334fc4, type: 3}
 --- !u!1 &1837083711
 GameObject:
   m_ObjectHideFlags: 0

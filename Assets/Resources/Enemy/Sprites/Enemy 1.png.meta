@@ -1,0 +1,382 @@
+fileFormatVersion: 2
+guid: 9143cc8d719bcd249a1a72457f334fc4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7942249098920568159
+    second: Enemy 1_0
+  - first:
+      213: 6294125324160034484
+    second: Enemy 1_1
+  - first:
+      213: 5845606359538220865
+    second: Enemy 1_2
+  - first:
+      213: 7559897690265657476
+    second: Enemy 1_3
+  - first:
+      213: -4821758819355737828
+    second: Enemy 1_4
+  - first:
+      213: 4027105108782761397
+    second: Enemy 1_5
+  - first:
+      213: -4356277145322495249
+    second: Enemy 1_6
+  - first:
+      213: -4536786074267818148
+    second: Enemy 1_7
+  - first:
+      213: 6469914809321751411
+    second: Enemy 1_8
+  - first:
+      213: -2540635606737711782
+    second: Enemy 1_9
+  - first:
+      213: 8571016785330678217
+    second: Enemy 1_10
+  - first:
+      213: -6999863032711394166
+    second: Enemy 1_11
+  - first:
+      213: -7306169539634696901
+    second: Enemy 1_12
+  - first:
+      213: -1145555792994578308
+    second: Enemy 1_13
+  - first:
+      213: -5680426439555403407
+    second: Enemy 1_14
+  - first:
+      213: 2624123026477953508
+    second: Enemy 1_15
+  - first:
+      213: -4634043128709410468
+    second: Enemy 1_16
+  - first:
+      213: -6204320956982381673
+    second: Enemy 1_17
+  - first:
+      213: 4182601990571434440
+    second: Enemy 1_18
+  - first:
+      213: -3033029466344800901
+    second: Enemy 1_19
+  - first:
+      213: -4838196666909180953
+    second: Enemy 1_20
+  - first:
+      213: 3542500663635982729
+    second: Enemy 1_21
+  - first:
+      213: 1870886288005790743
+    second: Enemy 1_22
+  - first:
+      213: -2514575506803282161
+    second: Enemy 1_23
+  - first:
+      213: 8883856182675853555
+    second: Enemy 1_24
+  - first:
+      213: 8097607632307191766
+    second: Enemy 1_25
+  - first:
+      213: 263371046804518397
+    second: Enemy 1_26
+  - first:
+      213: 773464748803421481
+    second: Enemy 1_27
+  - first:
+      213: -6870663373174613676
+    second: Enemy 1_28
+  - first:
+      213: 3137061775154824595
+    second: Enemy 1_29
+  - first:
+      213: -2705159431529886620
+    second: Enemy 1_30
+  - first:
+      213: -5960889716738863304
+    second: Enemy 1_31
+  - first:
+      213: 2122143002089068988
+    second: Enemy 1_32
+  - first:
+      213: -6284290983751779221
+    second: Enemy 1_33
+  - first:
+      213: 2346269802812787203
+    second: Enemy 1_34
+  - first:
+      213: -3030195924463532961
+    second: Enemy 1_35
+  - first:
+      213: 6707223144825336635
+    second: Enemy 1_36
+  - first:
+      213: -7978564461997916392
+    second: Enemy 1_37
+  - first:
+      213: 5841576677513920098
+    second: Enemy 1_38
+  - first:
+      213: -4314594836150792360
+    second: Enemy 1_39
+  - first:
+      213: 388819855263038191
+    second: Enemy 1_40
+  - first:
+      213: 5193438550969188087
+    second: Enemy 1_41
+  - first:
+      213: 2917055144006230132
+    second: Enemy 1_42
+  - first:
+      213: 5799333327302301263
+    second: Enemy 1_43
+  - first:
+      213: -6160251625669092772
+    second: Enemy 1_44
+  - first:
+      213: -7736161629681526599
+    second: Enemy 1_45
+  - first:
+      213: 5794212770536742386
+    second: Enemy 1_46
+  - first:
+      213: -7359556519045055302
+    second: Enemy 1_47
+  - first:
+      213: -4120815201546844762
+    second: Enemy 1_48
+  - first:
+      213: 6389883904908820758
+    second: Enemy 1_49
+  - first:
+      213: -2480527391875489710
+    second: Enemy 1_50
+  - first:
+      213: -4019800744206910883
+    second: Enemy 1_51
+  - first:
+      213: 135828633254875422
+    second: Enemy 1_52
+  - first:
+      213: -5964916881364691236
+    second: Enemy 1_53
+  - first:
+      213: -1450508318447020750
+    second: Enemy 1_54
+  - first:
+      213: 6938550883649620930
+    second: Enemy 1_55
+  - first:
+      213: 7310074892139337193
+    second: Enemy 1_0
+  - first:
+      213: 8356022386062964733
+    second: Enemy 1_1
+  - first:
+      213: -8484737276254663313
+    second: Enemy 1_2
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemy 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 49
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55a3d2c979883e60800000000000000
+      internalID: 7942249098920568159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy 1_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 49
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6695672a9395750800000000000000
+      internalID: 6294125324160034484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy 1_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 49
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f3a0d3304cf1150800000000000000
+      internalID: 5845606359538220865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
