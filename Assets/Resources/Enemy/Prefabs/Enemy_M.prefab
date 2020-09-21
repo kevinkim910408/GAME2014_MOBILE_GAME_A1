@@ -147,5 +147,5 @@ MonoBehaviour:
   moveSpeed: 3
   hp: 30
   sprites:
-  - {fileID: -7642239419928554605, guid: b985a72683952c546a4ec9ff80d013b2, type: 3}
-  - {fileID: 6294125324160034484, guid: 9143cc8d719bcd249a1a72457f334fc4, type: 3}
+  - {fileID: 9140734113758172672, guid: 9412d3117ac1ee44e8a0073598734fca, type: 3}
+  - {fileID: 4403464758321968483, guid: 049184affd202fe4fa5f8407e546d1a8, type: 3}
