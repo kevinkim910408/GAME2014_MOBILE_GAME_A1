@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour
         {
             PlayerBullet playerbullet = collision.gameObject.GetComponent<PlayerBullet>();
             OnHit(playerbullet.damage);
+
+            Destroy(collision.gameObject);
         }
     }
 
