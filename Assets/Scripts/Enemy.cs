@@ -23,10 +23,11 @@ public class Enemy : MonoBehaviour
     void OnHit(int damage)
     {
         hp -= damage;
+        //if hit - change sprite
         spriteRenderer.sprite = sprites[1];
-
         Invoke("ReturnSprite",0.1f);
 
+        //destroy
         if(hp <= 0)
         {
             Destroy(gameObject);
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
 
     void ReturnSprite()
     {
+        // back to original sprite
         spriteRenderer.sprite = sprites[0];
 
     }
@@ -43,13 +45,16 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "BulletBorder")
         {
+            // if enemy go out of the screen
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "PlayerBullet")
         {
+            // if enemy hit bullet
             PlayerBullet playerbullet = collision.gameObject.GetComponent<PlayerBullet>();
             OnHit(playerbullet.damage);
 
+            //delete player bullet 
             Destroy(collision.gameObject);
         }
     }
