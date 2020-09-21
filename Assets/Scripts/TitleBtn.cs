@@ -7,7 +7,8 @@ public class TitleBtn : MonoBehaviour
 {
     public void PlayGame()
     {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //call loading menu
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
 }
