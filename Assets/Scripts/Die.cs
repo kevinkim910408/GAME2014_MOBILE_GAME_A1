@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Name: Junho Kim
@@ -10,6 +11,7 @@ using UnityEngine;
 /// Program description
 ///  - managing player's after death.
 ///  - UI appear when user press space key. --> will change to when player die.
+///  - Button - back to main menu
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
@@ -58,6 +60,11 @@ public class Die : MonoBehaviour
             }
 
         }
+    }
+
+    public void MainMenu()
+    {
+            SceneManager.LoadScene("Scenes/TitleScene");
     }
 
 }

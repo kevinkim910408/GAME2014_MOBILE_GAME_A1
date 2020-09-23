@@ -37,6 +37,7 @@ public class Loading : MonoBehaviour
         if (fTime >= 3.0f)
         {
             async_operation.allowSceneActivation = true;
+            
         }
     }
 

@@ -19,7 +19,7 @@ public class TitleBtn : MonoBehaviour
     public void PlayGame()
     {
         //call loading menu
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("Scenes/LoadingScene");
     }
 
 }
