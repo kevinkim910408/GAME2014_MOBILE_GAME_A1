@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Name: Junho Kim
+/// Student#: 101136986
+/// The Source file name: EnmeyManager.cs
+/// Date last Modified: 2020-09-23
+/// Program description
+///  - Managing enemies' spawn.
+///  
+/// Revision History
+/// 2020-09-23: add Internal Documentation
+/// </summary>
+/// 
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField]

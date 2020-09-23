@@ -2,6 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Name: Junho Kim
+/// Student#: 101136986
+/// The Source file name: Player.cs
+/// Date last Modified: 2020-09-23
+/// Program description
+///  - Contains basic player needs - speeds, animation, bullets.
+///  - movement
+///  - if player gets energy - power up
+///  - borders - player cannot go out of the screen.
+///  - fire reloading time.
+///  - 
+///  
+/// Revision History
+/// 2020-09-23: add Internal Documentation
+/// </summary> 
 public class Player : MonoBehaviour
 {
     //SerializeField makes 'private' to 'public', but safe.

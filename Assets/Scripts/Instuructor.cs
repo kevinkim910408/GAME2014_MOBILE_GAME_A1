@@ -2,7 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Name: Junho Kim
+/// Student#: 101136986
+/// The Source file name: Instructor.cs
+/// Date last Modified: 2020-09-23
+/// Program description
+///  - vision Instructor panel
+///  
+/// Revision History
+/// 2020-09-23: add Internal Documentation
+/// </summary>
 public class Instuructor : MonoBehaviour
 {
     [SerializeField]

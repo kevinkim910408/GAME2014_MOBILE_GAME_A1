@@ -3,7 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Name: Junho Kim
+/// Student#: 101136986
+/// The Source file name: Loading.cs
+/// Date last Modified: 2020-09-23
+/// Program description
+///  - after 3 secs, move to play game scene
+///  - add a slider to let users know the progress of loading
+///  
+/// Revision History
+/// 2020-09-23: add Internal Documentation
+/// </summary>
+/// 
 public class Loading : MonoBehaviour
 {
     [SerializeField]

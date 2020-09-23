@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Name: Junho Kim
+/// Student#: 101136986
+/// The Source file name: Setting.cs
+/// Date last Modified: 2020-09-23
+/// Program description
+///  - vision Setting panel
+///  
+/// Revision History
+/// 2020-09-23: add Internal Documentation
+/// </summary>
+
 public class Setting : MonoBehaviour
 {
     [SerializeField]
