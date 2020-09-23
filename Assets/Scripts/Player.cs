@@ -236,4 +236,12 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    void DieTemp()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            
+        }
+    }
 }
