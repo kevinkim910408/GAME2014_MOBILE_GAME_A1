@@ -25,15 +25,24 @@ public class Die : MonoBehaviour
     int counter_DiePanel;
     bool isPause = false;
 
+    bool IsDone = false;
+    float fTime = 0.0f;
+    AsyncOperation async_operation;
+
     void Awake()
     {
         DiePanel.gameObject.SetActive(false);
     }
-     void Update()
+
+    void Start()
+    {
+        StartCoroutine(StartLoad("Scenes/TitleScene"));
+    }
+
+    void Update()
     {
         DieTemp();
     }
-
     
     void DieTemp() //will be deleted function.
     {
@@ -64,7 +73,23 @@ public class Die : MonoBehaviour
 
     public void MainMenu()
     {
-            SceneManager.LoadScene("Scenes/TitleScene");
+        async_operation.allowSceneActivation = true;
     }
+
+
+    public IEnumerator StartLoad(string strSceneName)
+    {
+        async_operation = SceneManager.LoadSceneAsync(strSceneName);
+        async_operation.allowSceneActivation = false;
+        if (IsDone == false)
+        {
+            IsDone = true;
+            while (async_operation.progress < 0.9f)
+            {
+                yield return true;
+            }
+        }
+    }
+
 
 }

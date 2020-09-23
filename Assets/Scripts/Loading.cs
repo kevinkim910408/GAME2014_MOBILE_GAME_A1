@@ -21,7 +21,7 @@ public class Loading : MonoBehaviour
     [SerializeField]
     Slider slider;
     bool IsDone = false;
-    float fTime = 0f;
+    float fTime = 0.0f;
     AsyncOperation async_operation;
 
     void Start()
@@ -36,8 +36,8 @@ public class Loading : MonoBehaviour
 
         if (fTime >= 3.0f)
         {
+            fTime = 0.0f;
             async_operation.allowSceneActivation = true;
-            
         }
     }
 
