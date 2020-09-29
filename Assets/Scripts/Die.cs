@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
+/// 2020-09-29: Die Key -> Die button
 /// </summary>
 
 public class Die : MonoBehaviour
@@ -31,13 +32,24 @@ public class Die : MonoBehaviour
     }
      void Update()
     {
-        DieTemp();
+        //DieTemp();
     }
 
-    
+    public void DieButton()
+    {
+        if (!isPause)
+        {
+            Time.timeScale = 0;
+            isPause = true;
+        }
+        DiePanel.gameObject.SetActive(true);
+
+    }
+
+    /*
     void DieTemp() //will be deleted function.
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             counter_DiePanel++;
             if (counter_DiePanel % 2 == 1)
@@ -61,7 +73,7 @@ public class Die : MonoBehaviour
 
         }
     }
-
+    */
     public void MainMenu()
     {
         SceneManager.LoadScene("Scenes/TitleScene");
