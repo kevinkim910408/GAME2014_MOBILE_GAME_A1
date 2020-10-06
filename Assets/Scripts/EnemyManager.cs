@@ -58,11 +58,38 @@ public class EnemyManager : MonoBehaviour
     void SpawnEnemy()
     {
         // Spawning Random Enemies in the Random Position. There are 3 enemies and 9 locations so far
-        int randomEnemy = Random.Range(0, 3);
-        int randomPosition = Random.Range(0, 9);
+        int randomEnemy = Random.Range(0, 3); // 0 ~ 2
+        int randomPosition = Random.Range(0, 9); // 0~ 8
 
         // actual code of spawning enemies made with Instantiate
-        Instantiate(enemies[randomEnemy],spawnPositions[randomPosition].position, spawnPositions[randomPosition].rotation);
+        GameObject enemy = Instantiate(enemies[randomEnemy],spawnPositions[randomPosition].position, spawnPositions[randomPosition].rotation);
+
+        // get component
+        Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
+        Enemy enemyLogic = enemy.GetComponent<Enemy>();
+
+        // After Spawning enemies, there behaviours
+        if(randomPosition == 5 || randomPosition  == 6)
+        {
+            // enemy fly to right down side from left side 
+            rigid.velocity = new Vector2(enemyLogic.moveSpeed * 1.0f, -1.0f);
+
+            // enemie's Z*axis rotation - 90 degree
+            enemy.transform.Rotate(Vector3.forward * 90);
+        }
+        else if (randomPosition == 7 || randomPosition == 8)
+        {
+            // enemy fly to left down side from right side,
+            rigid.velocity = new Vector2(enemyLogic.moveSpeed * (-1.0f), -1.0f);
+
+            // enemie's Z*axis rotation - 90 degree
+            enemy.transform.Rotate(Vector3.back * 90);
+        }
+        else
+        {
+            // enemy fly to bottom side from up side 
+            rigid.velocity = new Vector2(0.0f , enemyLogic.moveSpeed * (-1.0f));
+        }
     }
     #endregion
 }

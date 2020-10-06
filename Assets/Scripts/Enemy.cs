@@ -25,8 +25,7 @@ public class Enemy : MonoBehaviour
 
     // Components
     SpriteRenderer spriteRenderer;
-    Rigidbody2D rigid;
-
+   
     // Enemies' sprites
     [SerializeField]
     Sprite[] sprites = null;
@@ -38,10 +37,6 @@ public class Enemy : MonoBehaviour
     {
         // GetComponents
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rigid = GetComponent<Rigidbody2D>();
-
-        // Initialize Enemies' velocity
-        rigid.velocity = Vector2.down * moveSpeed;
     }
 
 
