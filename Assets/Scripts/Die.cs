@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Die.cs
-/// Date last Modified: 2020-09-23
+/// Date last Modified: 2020-10-07
 /// Program description
 ///  - managing player's after death.
 ///  - UI appear when user press space key. --> will change to when player die.
@@ -16,18 +16,29 @@ using UnityEngine.SceneManagement;
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-09-29: Die Key -> Die button
+/// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes
 /// </summary>
 
 public class Die : MonoBehaviour
 {
+    #region Variables
+
+    // for pop-up die event (panel)
     [SerializeField]
     GameObject DiePanel;
 
-    int counter_DiePanel;
+    //int counter_DiePanel; 
+
+    // Only Pause when player dead
     bool isPause = false;
+
+    #endregion
+
+    #region Unity_Method
 
     void Awake()
     {
+        // At first, there is no die event
         DiePanel.gameObject.SetActive(false);
     }
      void Update()
@@ -35,6 +46,11 @@ public class Die : MonoBehaviour
         //DieTemp();
     }
 
+    #endregion
+
+    #region Custom_Method
+
+    // Die Button - will be removed
     public void DieButton()
     {
         if (!isPause)
@@ -46,8 +62,10 @@ public class Die : MonoBehaviour
 
     }
 
-    /*
-    void DieTemp() //will be deleted function.
+
+    /* //Spawn Die event with a button - not available now
+     
+    public void DieTemp() 
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -74,6 +92,8 @@ public class Die : MonoBehaviour
         }
     }
     */
+
+    // Option no.1 in the die event
     public void MainMenu()
     {
         SceneManager.LoadScene("Scenes/TitleScene");
@@ -84,6 +104,7 @@ public class Die : MonoBehaviour
         }
     }
 
+    // Option no.2 in the die event
     public void Retry()
     {
         SceneManager.LoadScene("Scenes/GameScene");
@@ -93,5 +114,5 @@ public class Die : MonoBehaviour
             isPause = false;
         }
     }
-
+    #endregion
 }

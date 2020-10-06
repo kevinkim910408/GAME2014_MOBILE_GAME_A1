@@ -6,7 +6,7 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Player.cs
-/// Date last Modified: 2020-09-23
+/// Date last Modified: 2020-10-07
 /// Program description
 ///  - Contains basic player needs - speeds, animation, bullets.
 ///  - movement
@@ -17,18 +17,21 @@ using UnityEngine;
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
+/// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes
 /// </summary> 
 public class Player : MonoBehaviour
 {
-    //SerializeField makes 'private' to 'public', but safe.
-    [SerializeField]
+    #region Variables
+
+    // Speeds
+    [SerializeField]                        //SerializeField makes 'private' to 'public', but safe.
     float moveSpeed = 5.0f;
     [SerializeField]
     float bulletSpeed = 10.0f;
     [SerializeField]
     float bombSpeed = 10.0f;
 
-    //for bomb
+    //for bomb - if player gets this, power up
     [SerializeField]
     float energy;
 
@@ -53,8 +56,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     float currentReloadingTime;
 
-    //---------------------------------------------------------------------------------------------------------------------------------------------------------------//
-     void Awake()
+    #endregion
+
+    #region Unity_Method
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
@@ -68,6 +73,9 @@ public class Player : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region Custom_Method
     void PlayerMove()
     {
         float moveX = Input.GetAxisRaw("Horizontal"); // GetAxis - soft movement
@@ -87,7 +95,7 @@ public class Player : MonoBehaviour
         }
 
         //2D game, no Z-axis.
-        Vector3 movement = new Vector3(moveX, moveY, 0) * moveSpeed * Time.deltaTime;
+        Vector3 movement = new Vector3(moveX, moveY, 0.0f) * moveSpeed * Time.deltaTime;
         Vector3 currentPosition = transform.position;
 
         //move
@@ -103,6 +111,7 @@ public class Player : MonoBehaviour
 
     void PlayerFire()
     {
+        // Mouse Left Click
         if (!Input.GetButton("Fire1"))
             return;
             
@@ -191,8 +200,10 @@ public class Player : MonoBehaviour
         currentReloadingTime += Time.deltaTime;
     }
 
-    //when player touch the screen border
-     void OnTriggerEnter2D(Collider2D collision)
+    #endregion
+
+    //when player hit the screen border
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ScreenBorder") // if the tag is screenborder
         {
