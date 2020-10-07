@@ -49,6 +49,9 @@ public class Enemy : MonoBehaviour
     // Fire to player
     public GameObject player;
 
+    // Enemy's score
+    public int enemyScore;
+
     #endregion
 
     #region Unity_Method
@@ -81,6 +84,10 @@ public class Enemy : MonoBehaviour
         //destroy
         if(hp <= 0)
         {
+            // if Enemy dies, player get scores.
+            Player playerLogic = player.GetComponent<Player>();
+            // Enemy Score can set from the Prefabs
+            playerLogic.score += enemyScore;
             Destroy(gameObject);
         }
     }

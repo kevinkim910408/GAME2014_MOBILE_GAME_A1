@@ -59,6 +59,13 @@ public class Player : MonoBehaviour
     // To use Player Respawning
     public EnemyManager manager;
 
+    // player life and score -  for UI
+    public int life;
+    public int score;
+
+    // even player is hit 2 attacks at the same time, life decreases only one.
+    public bool isHit;
+
     #endregion
 
     #region Unity_Method
@@ -226,11 +233,26 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-        // player is shot by enemy
+        // player is shot by enemy (die)
         else if ((collision.gameObject.tag == "Enemy") ||(collision.gameObject.tag == "EnemyBullet"))
         {
-            manager.RespawnPlayer();
+            if (isHit)
+                return;
+
+            isHit = true;
+            life--;
+            manager.UpdateLife(life);
+
+            if(life == 0)
+            {
+                manager.GameOver();
+            }
+            else
+            {
+                manager.RespawnPlayer();
+            }
             gameObject.SetActive(false);
+            Destroy(collision.gameObject);
 
         }
     }

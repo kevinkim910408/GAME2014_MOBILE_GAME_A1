@@ -146,6 +146,7 @@ MonoBehaviour:
   currentReloadingTime: 0
   enemyName: S
   player: {fileID: 0}
+  enemyScore: 100
 --- !u!1001 &6684127187914471669
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,83 +16,32 @@ using UnityEngine.SceneManagement;
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-09-29: Die Key -> Die button
-/// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes
+/// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes, 
+/// 2020-10-07: only use for options after die.
 /// </summary>
 
 public class Die : MonoBehaviour
 {
     #region Variables
-
-    // for pop-up die event (panel)
-    [SerializeField]
-    GameObject DiePanel;
-
-    //int counter_DiePanel; 
-
     // Only Pause when player dead
     bool isPause = false;
 
     #endregion
 
     #region Unity_Method
-
-    void Awake()
+    private void Start()
     {
-        // At first, there is no die event
-        DiePanel.gameObject.SetActive(false);
-    }
-     void Update()
-    {
-        //DieTemp();
-    }
-
-    #endregion
-
-    #region Custom_Method
-
-    // Die Button - will be removed
-    public void DieButton()
-    {
+        // Pause if game over
         if (!isPause)
         {
             Time.timeScale = 0;
             isPause = true;
         }
-        DiePanel.gameObject.SetActive(true);
-
     }
 
+    #endregion
 
-    /* //Spawn Die event with a button - not available now
-     
-    public void DieTemp() 
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            counter_DiePanel++;
-            if (counter_DiePanel % 2 == 1)
-            {
-                if (!isPause)
-                {
-                    Time.timeScale = 0;
-                    isPause = true;
-                }
-                DiePanel.gameObject.SetActive(true);
-            }
-            if (counter_DiePanel % 2 == 0)
-            {
-                if (isPause)
-                {
-                    Time.timeScale = 1;
-                    isPause = false;
-                }
-                DiePanel.gameObject.SetActive(false);
-            }
-
-        }
-    }
-    */
-
+    #region Custom_Method
     // Option no.1 in the die event
     public void MainMenu()
     {

@@ -153,10 +153,11 @@ MonoBehaviour:
   - {fileID: -187239765857314866, guid: 6ca8f5d76d2c94b48b092402443cd11c, type: 3}
   EnemyBulletA: {fileID: 8215350343324855190, guid: 371111528ff672b4286304997ec61f43, type: 3}
   EnemyBulletB: {fileID: 8215350343324855190, guid: 416b88204a418824b9362149478b6081, type: 3}
-  maxReloadingTime: 0.5
+  maxReloadingTime: 1
   currentReloadingTime: 0
   enemyName: M
   player: {fileID: 0}
+  enemyScore: 500
 --- !u!1001 &3706092241696401760
 PrefabInstance:
   m_ObjectHideFlags: 0

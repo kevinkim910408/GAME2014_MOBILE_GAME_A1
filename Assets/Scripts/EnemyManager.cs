@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Name: Junho Kim
@@ -32,6 +33,13 @@ public class EnemyManager : MonoBehaviour
     // Fire to player
     public GameObject player;
 
+    // Score Text in the gameScene
+    public Text scoreText;
+    // Life Images in the gameScene
+    public Image[] lifeImage;
+
+    public GameObject gameover;
+
     #endregion
 
     #region Unity_Method
@@ -51,6 +59,10 @@ public class EnemyManager : MonoBehaviour
             // reset current delay
             currentDelay = 0;
         }
+
+        // score update
+        Player playerLogic = player.GetComponent<Player>();
+        scoreText.text = string.Format("{0:n0}", playerLogic.score);
     }
 
     #endregion
@@ -108,6 +120,33 @@ public class EnemyManager : MonoBehaviour
         // this position is measured in the scene (0, -4, 0)
         player.transform.position = Vector3.down * 4.0f;
         player.SetActive(true);
+
+        Player playerLogic = player.GetComponent<Player>();
+        playerLogic.isHit = false;
+    }
+
+    // Update Player Life Icons 
+    public void UpdateLife(int life)
+    {
+        // life disable
+        for (int i = 0; i < 3; ++i)
+        {
+            // make transparent the life 
+            lifeImage[i].color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        }
+
+        // life able
+        for (int i = 0; i < life; ++i)
+        {
+            // make transparent the life 
+            lifeImage[i].color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        }
+    }
+
+    //Game Over  
+    public void GameOver()
+    {
+        gameover.SetActive(true);
     }
     #endregion
 }
