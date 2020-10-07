@@ -3655,8 +3655,9 @@ MonoBehaviour:
   - {fileID: 489738122}
   - {fileID: 1817771063}
   - {fileID: 2111179458}
-  maxDelay: 1
+  maxDelay: 2
   currentDelay: 0
+  player: {fileID: 8408636964082676382}
 --- !u!4 &1860964286
 Transform:
   m_ObjectHideFlags: 0
@@ -4012,7 +4013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8408636965519374804, guid: d4bc217567cb74347b06b35ffe3416c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8408636965519374804, guid: d4bc217567cb74347b06b35ffe3416c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4060,3 +4061,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4bc217567cb74347b06b35ffe3416c5, type: 3}
+--- !u!1 &8408636964082676382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8408636965519374811, guid: d4bc217567cb74347b06b35ffe3416c5, type: 3}
+  m_PrefabInstance: {fileID: 8408636964082676381}
+  m_PrefabAsset: {fileID: 0}

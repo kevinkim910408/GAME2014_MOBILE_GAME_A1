@@ -10,10 +10,11 @@ using UnityEngine;
 /// Program description
 ///  - This script is only for enemies. It contains enemies hp, and movespeed. Also contains enemies sprites to change when enemies are hit by player.
 ///  - if Enemies and the bullets hit the border --> destroy.
+///  - Enmey can fire bullets to player
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
-/// 2020-10-07: inline comments + make code looks clear
+/// 2020-10-07: inline comments + make code looks clear, Enmey can fire
 /// </summary>
 /// 
 public class Enemy : MonoBehaviour
@@ -30,6 +31,24 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     Sprite[] sprites = null;
 
+    // Enemy projectiles
+    [SerializeField]
+    GameObject EnemyBulletA;
+    [SerializeField]
+    GameObject EnemyBulletB;
+
+    //delay Enemy's firing
+    [SerializeField]
+    float maxReloadingTime = 2.0f;
+    [SerializeField]
+    float currentReloadingTime;
+
+    // variable for give enemies' bullets
+    public string enemyName;
+
+    // Fire to player
+    public GameObject player;
+
     #endregion
 
     #region Unity_Method
@@ -37,6 +56,13 @@ public class Enemy : MonoBehaviour
     {
         // GetComponents
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        EnemyFire();
+        Reload();
+
     }
 
 
@@ -84,6 +110,50 @@ public class Enemy : MonoBehaviour
             //delete player bullet 
             Destroy(collision.gameObject);
         }
+    }
+
+    void EnemyFire()
+    {
+        //if reloading time is not max, cannot fire.
+        if (currentReloadingTime < maxReloadingTime)
+            return;
+
+        if(enemyName == "L")
+        {
+            //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
+            GameObject bullet = Instantiate(EnemyBulletA, transform.position, transform.rotation);
+            Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
+
+            //Vector between enemies and player
+            Vector3 dirVec = player.transform.position - transform.position;
+
+            rigid2D.AddForce(dirVec.normalized * 3.0f, ForceMode2D.Impulse);
+        }
+        else if (enemyName == "M") // shoot 2 kinds of bullets
+        {
+            //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
+            GameObject bulletR = Instantiate(EnemyBulletB, transform.position + Vector3.right*0.3f, transform.rotation);
+            Rigidbody2D rigid1 = bulletR.GetComponent<Rigidbody2D>();
+            //Vector between enemies and player
+            Vector3 dirVec = player.transform.position - (transform.position + Vector3.right * 0.3f);
+            rigid1.AddForce(dirVec.normalized * 5.0f, ForceMode2D.Impulse);
+
+            //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
+            GameObject bulletL = Instantiate(EnemyBulletB, transform.position + Vector3.left * 0.3f, transform.rotation);
+            Rigidbody2D rigid2 = bulletL.GetComponent<Rigidbody2D>();
+            //Vector between enemies and player
+            Vector3 dirVec2 = player.transform.position - (transform.position + Vector3.left * 0.3f);
+            rigid2.AddForce(dirVec.normalized * 5.0f, ForceMode2D.Impulse);
+        }
+
+        //after shot, reset reloading 
+        currentReloadingTime = 0;
+    }
+
+    //Reload
+    void Reload()
+    {
+        currentReloadingTime += Time.deltaTime;
     }
 
 }

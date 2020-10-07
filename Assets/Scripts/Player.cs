@@ -38,23 +38,26 @@ public class Player : MonoBehaviour
     //for player animation
     Animator animator;
 
-    //Player projectiles
-    [SerializeField]
-    GameObject playerBullet;
-    [SerializeField]
-    GameObject playerBomb;
-
     //for player touch the screen border
     bool touchTop = false;
     bool touchBottom = false;
     bool touchRight = false;
     bool touchLeft = false;
 
+    //Player projectiles
+    [SerializeField]
+    GameObject playerBullet;
+    [SerializeField]
+    GameObject playerBomb;
+
     //delay player's firing
     [SerializeField]
     float maxReloadingTime = 0.5f;
     [SerializeField]
     float currentReloadingTime;
+
+    // To use Player Respawning
+    public EnemyManager manager;
 
     #endregion
 
@@ -222,6 +225,13 @@ public class Player : MonoBehaviour
                     touchLeft = true;
                     break;
             }
+        }
+        // player is shot by enemy
+        else if ((collision.gameObject.tag == "Enemy") ||(collision.gameObject.tag == "EnemyBullet"))
+        {
+            manager.RespawnPlayer();
+            gameObject.SetActive(false);
+
         }
     }
 

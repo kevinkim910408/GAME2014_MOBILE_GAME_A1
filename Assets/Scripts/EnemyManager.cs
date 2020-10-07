@@ -29,6 +29,9 @@ public class EnemyManager : MonoBehaviour
     public float maxDelay;
     public float currentDelay;
 
+    // Fire to player
+    public GameObject player;
+
     #endregion
 
     #region Unity_Method
@@ -67,6 +70,7 @@ public class EnemyManager : MonoBehaviour
         // get component
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
+        enemyLogic.player = player;
 
         // After Spawning enemies, there behaviours
         if(randomPosition == 5 || randomPosition  == 6)
@@ -90,6 +94,20 @@ public class EnemyManager : MonoBehaviour
             // enemy fly to bottom side from up side 
             rigid.velocity = new Vector2(0.0f , enemyLogic.moveSpeed * (-1.0f));
         }
+    }
+
+    // player respawn
+    public void RespawnPlayer()
+    {
+        // give a delay for respawning = 2 seconds.
+        Invoke("RespawnPlayerExe",2.0f);
+    }
+
+    private void RespawnPlayerExe()
+    {
+        // this position is measured in the scene (0, -4, 0)
+        player.transform.position = Vector3.down * 4.0f;
+        player.SetActive(true);
     }
     #endregion
 }
