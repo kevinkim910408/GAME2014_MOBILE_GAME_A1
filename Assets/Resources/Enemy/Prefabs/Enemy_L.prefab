@@ -152,6 +152,8 @@ MonoBehaviour:
   - {fileID: 3500026759195111327, guid: 6ca8f5d76d2c94b48b092402443cd11c, type: 3}
   EnemyBulletA: {fileID: 8215350343324855190, guid: 371111528ff672b4286304997ec61f43, type: 3}
   EnemyBulletB: {fileID: 8215350343324855190, guid: 416b88204a418824b9362149478b6081, type: 3}
+  itemPower: {fileID: 7491698844974409654, guid: 58e09b4bc52e91943b234bcb26157cde, type: 3}
+  itemCoin: {fileID: 6282400275892136574, guid: 18557db5b637ec04187c8662028995e8, type: 3}
   maxReloadingTime: 2
   currentReloadingTime: 0
   enemyName: L

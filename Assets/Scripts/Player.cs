@@ -6,7 +6,7 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Player.cs
-/// Date last Modified: 2020-10-07
+/// Date last Modified: 2020-10-11
 /// Program description
 ///  - Contains basic player needs - speeds, animation, bullets.
 ///  - movement
@@ -18,6 +18,7 @@ using UnityEngine;
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes
+/// 2020-10-11: player can get items.
 /// </summary> 
 public class Player : MonoBehaviour
 {
@@ -30,10 +31,6 @@ public class Player : MonoBehaviour
     float bulletSpeed = 10.0f;
     [SerializeField]
     float bombSpeed = 10.0f;
-
-    //for bomb - if player gets this, power up
-    [SerializeField]
-    float energy;
 
     //for player animation
     Animator animator;
@@ -65,6 +62,11 @@ public class Player : MonoBehaviour
 
     // even player is hit 2 attacks at the same time, life decreases only one.
     public bool isHit;
+    
+ 
+    // about items
+    public int curentPower;
+    public int maxPower;
 
     #endregion
 
@@ -129,7 +131,7 @@ public class Player : MonoBehaviour
         if (currentReloadingTime < maxReloadingTime)
             return;
 
-        switch (energy)
+        switch (curentPower)
         {
             // energy = 1
             case 0:
@@ -254,6 +256,31 @@ public class Player : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(collision.gameObject);
 
+        }
+
+        //player gets items
+        else if ((collision.gameObject.tag == "Item") || (collision.gameObject.tag == "EnemyBullet"))
+        {
+            Item item = collision.gameObject.GetComponent<Item>();
+            switch (item.itemType)
+            {
+                case "Coin":
+                    score += 1500;
+                    break;
+
+                case "Power":
+                    if(curentPower == maxPower)
+                    {
+                        score += 1000;
+                    }
+                    else
+                    {
+                        curentPower++;
+                    }
+                    break;
+            }
+            // destroy items
+            Destroy(collision.gameObject);
         }
     }
 

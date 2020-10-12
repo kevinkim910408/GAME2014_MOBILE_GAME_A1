@@ -6,7 +6,7 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Enmey.cs
-/// Date last Modified: 2020-10-07
+/// Date last Modified: 2020-10-12
 /// Program description
 ///  - This script is only for enemies. It contains enemies hp, and movespeed. Also contains enemies sprites to change when enemies are hit by player.
 ///  - if Enemies and the bullets hit the border --> destroy.
@@ -15,6 +15,7 @@ using UnityEngine;
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: inline comments + make code looks clear, Enmey can fire
+/// 2020-10-12: Enemy drops items
 /// </summary>
 /// 
 public class Enemy : MonoBehaviour
@@ -36,6 +37,13 @@ public class Enemy : MonoBehaviour
     GameObject EnemyBulletA;
     [SerializeField]
     GameObject EnemyBulletB;
+
+    // Enemy drops items
+    [SerializeField]
+    GameObject itemPower;
+    [SerializeField]
+    GameObject itemCoin;
+
 
     //delay Enemy's firing
     [SerializeField]
@@ -76,6 +84,9 @@ public class Enemy : MonoBehaviour
     // Enemy hit by Player
     void OnHit(int damage)
     {
+        if (hp <= 0)
+            return;
+
         hp -= damage;
         //if hit - change sprite
         spriteRenderer.sprite = sprites[1];
@@ -88,6 +99,26 @@ public class Enemy : MonoBehaviour
             Player playerLogic = player.GetComponent<Player>();
             // Enemy Score can set from the Prefabs
             playerLogic.score += enemyScore;
+
+            // when enemies dead, drop items - random
+            int random = Random.Range(0, 10);
+            if (random <= 7) //70%
+            {
+                // no item
+                Debug.Log("No Item");
+            }
+            else if (random <= 9) //20%
+            {
+                // coin
+                Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
+            }
+            else if (random == 10) // 10%
+            {
+                // power
+                Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+
+            }
+
             Destroy(gameObject);
         }
     }
