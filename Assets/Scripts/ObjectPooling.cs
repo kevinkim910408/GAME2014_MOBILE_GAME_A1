@@ -51,17 +51,17 @@ public class ObjectPooling : MonoBehaviour
     private void Awake()
     {
         // set the production limits of prefabs
-        enemy_L = new GameObject[10];
-        enemy_M = new GameObject[10];
-        enemy_S = new GameObject[10];
+        enemy_L = new GameObject[20];
+        enemy_M = new GameObject[20];
+        enemy_S = new GameObject[20];
 
         item_Coin = new GameObject[20];
         item_Power = new GameObject[20];
 
-        Bullet_Player_A = new GameObject[200];
-        Bullet_Player_B = new GameObject[200];
-        Bullet_Enemy_A = new GameObject[200];
-        Bullet_Enemy_B = new GameObject[200];
+        Bullet_Player_A = new GameObject[1000];
+        Bullet_Player_B = new GameObject[1000];
+        Bullet_Enemy_A = new GameObject[1000];
+        Bullet_Enemy_B = new GameObject[1000];
 
         Generate();
     }

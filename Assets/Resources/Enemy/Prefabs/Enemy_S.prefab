@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  hp: 15
+  hp: 10
   sprites:
   - {fileID: -9119592970449644119, guid: d5733bf93411a3540bc03d03306a96f7, type: 3}
   - {fileID: -5130040544749256805, guid: 6ca8f5d76d2c94b48b092402443cd11c, type: 3}
