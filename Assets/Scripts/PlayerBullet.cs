@@ -31,7 +31,8 @@ public class PlayerBullet : MonoBehaviour
         //if gmaobject(bullets) touch the border
         if(collision.gameObject.tag == "BulletBorder")
         {
-            Destroy(gameObject); //destroy bullets
+            //Destroy(gameObject); //destroy bullets -- object pooling
+            gameObject.SetActive(false);
         }
     }
 }

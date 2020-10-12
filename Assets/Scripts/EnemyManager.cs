@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,14 @@ using UnityEngine.UI;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: EnmeyManager.cs
-/// Date last Modified: 2020-10-07
+/// Date last Modified: 2020-10-12
 /// Program description
 ///  - Managing enemies' spawn.
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: Add more Enemy spawn place, inline comments, make code looks clear, removed unnecessary codes
+/// 2020-10-12: Object Pooling
 /// </summary>
 /// 
 public class EnemyManager : MonoBehaviour
@@ -21,7 +23,7 @@ public class EnemyManager : MonoBehaviour
     #region Variables
     // Enemies' object that EnemyManger can instantiate. Made by array because there are total 3 enemies so far
     [SerializeField]
-    GameObject[] enemies;
+    string[] enemies;
 
     // Enemies' Spawning location.
     public Transform[] spawnPositions;
@@ -40,9 +42,16 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject gameover;
 
+    public ObjectPooling objectPooling;
+
     #endregion
 
     #region Unity_Method
+
+    private void Awake()
+    {
+        enemies = new string[] { "EnemyL", "EnemyM", "EnemyS" };
+    }
     private void Update()
     {
         // current delay = current delay + evety frame 
@@ -76,13 +85,17 @@ public class EnemyManager : MonoBehaviour
         int randomEnemy = Random.Range(0, 3); // 0 ~ 2
         int randomPosition = Random.Range(0, 9); // 0~ 8
 
-        // actual code of spawning enemies made with Instantiate
-        GameObject enemy = Instantiate(enemies[randomEnemy],spawnPositions[randomPosition].position, spawnPositions[randomPosition].rotation);
-
+        // actual code of spawning enemies made with Instantiate - object pooling
+        GameObject enemy = objectPooling.MakeObject(enemies[randomEnemy]);
+        enemy.transform.position = spawnPositions[randomPosition].position;
+        enemy.transform.rotation = spawnPositions[randomPosition].rotation;
+        //GameObject enemy = Instantiate(enemies[randomEnemy], spawnPositions[randomPosition].position, spawnPositions[randomPosition].rotation);
+         
         // get component
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
         enemyLogic.player = player;
+        enemyLogic.objectPooling = objectPooling;
 
         // After Spawning enemies, there behaviours
         if(randomPosition == 5 || randomPosition  == 6)

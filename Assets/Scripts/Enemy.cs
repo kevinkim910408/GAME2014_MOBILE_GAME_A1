@@ -60,6 +60,8 @@ public class Enemy : MonoBehaviour
     // Enemy's score
     public int enemyScore;
 
+    public ObjectPooling objectPooling;
+
     #endregion
 
     #region Unity_Method
@@ -67,6 +69,23 @@ public class Enemy : MonoBehaviour
     {
         // GetComponents
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    // After set false (object pooling) - reset their hp
+    private void OnEnable()
+    {
+        switch (enemyName)
+        {
+            case "L":
+                hp = 60;
+                break;
+            case "M":
+                hp = 30;
+                break;
+            case "S":
+                hp = 15;
+                break;
+        }
     }
 
     void Update()
@@ -102,24 +121,41 @@ public class Enemy : MonoBehaviour
 
             // when enemies dead, drop items - random
             int random = Random.Range(0, 10);
-            if (random <= 7) //70%
+            if (random <= 3) //70%
             {
                 // no item
                 Debug.Log("No Item");
             }
-            else if (random <= 9) //20%
+            else if (random <= 7) //20%
             {
                 // coin
-                Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
+                GameObject itemCoin =  objectPooling.MakeObject("ItemCoin");
+                itemCoin.transform.position = transform.position;
+                //Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
+
+                // item drop speed
+                //Rigidbody2D rigid = itemCoin.GetComponent<Rigidbody2D>();
+               // rigid.velocity = Vector2.down * 0.01f;
             }
-            else if (random == 10) // 10%
+            else if (random <= 10) // 10%
             {
                 // power
-                Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+                GameObject itemPower = objectPooling.MakeObject("ItemPower");
+                itemPower.transform.position = transform.position;
+                //Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+
+                // item drop speed
+                //Rigidbody2D rigid = itemPower.GetComponent<Rigidbody2D>();
+                //rigid.velocity = Vector2.down * 0.01f;
 
             }
 
-            Destroy(gameObject);
+            // object pooling
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
+
+            // no rotation.
+            transform.rotation = Quaternion.identity;
         }
     }
 
@@ -136,8 +172,10 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "BulletBorder")
         {
-            // if enemy go out of the screen
-            Destroy(gameObject);
+            // if enemy go out of the screen - object pooling
+            gameObject.SetActive(false);
+            transform.rotation = Quaternion.identity;
+
         }
         else if (collision.gameObject.tag == "PlayerBullet")
         {
@@ -145,8 +183,9 @@ public class Enemy : MonoBehaviour
             PlayerBullet playerbullet = collision.gameObject.GetComponent<PlayerBullet>();
             OnHit(playerbullet.damage);
 
-            //delete player bullet 
-            Destroy(collision.gameObject);
+            //delete player bullet - object pooling
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 
@@ -159,8 +198,12 @@ public class Enemy : MonoBehaviour
         if(enemyName == "L")
         {
             //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
-            GameObject bullet = Instantiate(EnemyBulletA, transform.position, transform.rotation);
-            Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
+            // GameObject bullet = Instantiate(EnemyBulletA, transform.position, transform.rotation);
+            GameObject bullet = objectPooling.MakeObject("EnemyBulletA");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+
+             Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
 
             //Vector between enemies and player
             Vector3 dirVec = player.transform.position - transform.position;
@@ -170,14 +213,22 @@ public class Enemy : MonoBehaviour
         else if (enemyName == "M") // shoot 2 kinds of bullets
         {
             //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
-            GameObject bulletR = Instantiate(EnemyBulletB, transform.position + Vector3.right*0.3f, transform.rotation);
+            //GameObject bulletR = Instantiate(EnemyBulletB, transform.position + Vector3.right*0.3f, transform.rotation);
+            GameObject bulletR = objectPooling.MakeObject("EnemyBulletB");
+            bulletR.transform.position = transform.position + Vector3.right * 0.3f;
+            bulletR.transform.rotation = transform.rotation;
+
             Rigidbody2D rigid1 = bulletR.GetComponent<Rigidbody2D>();
             //Vector between enemies and player
             Vector3 dirVec = player.transform.position - (transform.position + Vector3.right * 0.3f);
             rigid1.AddForce(dirVec.normalized * 5.0f, ForceMode2D.Impulse);
 
             //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
-            GameObject bulletL = Instantiate(EnemyBulletB, transform.position + Vector3.left * 0.3f, transform.rotation);
+            //GameObject bulletL = Instantiate(EnemyBulletB, transform.position + Vector3.left * 0.3f, transform.rotation);
+            GameObject bulletL = objectPooling.MakeObject("EnemyBulletB");
+            bulletL.transform.position = transform.position + Vector3.left * 0.3f;
+            bulletL.transform.rotation = transform.rotation;
+
             Rigidbody2D rigid2 = bulletL.GetComponent<Rigidbody2D>();
             //Vector between enemies and player
             Vector3 dirVec2 = player.transform.position - (transform.position + Vector3.left * 0.3f);

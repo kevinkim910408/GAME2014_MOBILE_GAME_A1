@@ -68,6 +68,9 @@ public class Player : MonoBehaviour
     public int curentPower;
     public int maxPower;
 
+    // object pooling
+    public ObjectPooling objectPooling; 
+
     #endregion
 
     #region Unity_Method
@@ -138,9 +141,12 @@ public class Player : MonoBehaviour
             case 1:
             case 2:
                 //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
-                GameObject bullet = Instantiate(playerBullet, transform.position, transform.rotation);
+                // GameObject bullet = Instantiate(playerBullet, transform.position, transform.rotation);
+                GameObject bullet = objectPooling.MakeObject("PlayerBulletA");
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = transform.rotation;
 
-                //to add force
+                 //to add force
                 Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
                 rigid2D.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse);
                 break;
@@ -148,8 +154,15 @@ public class Player : MonoBehaviour
             // energy = 3
             case 3:
             case 4:
-                GameObject bulletRight = Instantiate(playerBullet, transform.position + Vector3.right * 0.15f, transform.rotation);
-                GameObject bulletLeft = Instantiate(playerBullet, transform.position + Vector3.left * 0.1f, transform.rotation);
+                //GameObject bulletRight = Instantiate(playerBullet, transform.position + Vector3.right * 0.15f, transform.rotation);
+                //GameObject bulletLeft = Instantiate(playerBullet, transform.position + Vector3.left * 0.1f, transform.rotation);
+
+                GameObject bulletRight = objectPooling.MakeObject("PlayerBulletA");
+                GameObject bulletLeft = objectPooling.MakeObject("PlayerBulletA");
+                bulletRight.transform.position = transform.position + Vector3.right * 0.15f;
+                bulletLeft.transform.position = transform.position + Vector3.left * 0.1f;
+                bulletRight.transform.rotation = transform.rotation;
+                bulletLeft.transform.rotation = transform.rotation;
 
                 Rigidbody2D rigid2DRight = bulletRight.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigid2DLeft = bulletLeft.GetComponent<Rigidbody2D>();
@@ -160,7 +173,10 @@ public class Player : MonoBehaviour
             // energy = 5
             case 5:
             case 6:
-                GameObject bomb = Instantiate(playerBomb, transform.position, transform.rotation);
+                //GameObject bomb = Instantiate(playerBomb, transform.position, transform.rotation);
+                GameObject bomb = objectPooling.MakeObject("PlayerBulletB");
+                bomb.transform.position = transform.position;
+                bomb.transform.rotation = transform.rotation;
 
                 Rigidbody2D rigid2D_bomb = bomb.GetComponent<Rigidbody2D>();
                 rigid2D_bomb.AddForce(Vector2.up * bombSpeed, ForceMode2D.Impulse);
@@ -170,9 +186,20 @@ public class Player : MonoBehaviour
             case 7:
             case 8:
             case 9:
-                GameObject bomb2 = Instantiate(playerBomb, transform.position, transform.rotation);
-                GameObject bulletRight2 = Instantiate(playerBullet, transform.position + Vector3.right * 0.3f, transform.rotation);
-                GameObject bulletLeft2 = Instantiate(playerBullet, transform.position + Vector3.left * 0.25f, transform.rotation);
+                //GameObject bomb2 = Instantiate(playerBomb, transform.position, transform.rotation);
+                //GameObject bulletRight2 = Instantiate(playerBullet, transform.position + Vector3.right * 0.3f, transform.rotation);
+                //GameObject bulletLeft2 = Instantiate(playerBullet, transform.position + Vector3.left * 0.25f, transform.rotation);
+                GameObject bulletRight2 = objectPooling.MakeObject("PlayerBulletA");
+                GameObject bulletLeft2 = objectPooling.MakeObject("PlayerBulletA");
+                GameObject bomb2 = objectPooling.MakeObject("PlayerBulletB");
+
+                bomb2.transform.position = transform.position;
+                bulletRight2.transform.position = transform.position + Vector3.right * 0.3f;
+                bulletLeft2.transform.position = transform.position + Vector3.left * 0.25f;
+
+                bomb2.transform.rotation = transform.rotation;
+                bulletRight2.transform.rotation = transform.rotation;
+                bulletLeft2.transform.rotation = transform.rotation;
 
                 Rigidbody2D rigid2D_bomb2 = bomb2.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigid2DRight2 = bulletRight2.GetComponent<Rigidbody2D>();
@@ -182,11 +209,28 @@ public class Player : MonoBehaviour
                 rigid2DLeft2.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse);
                 break;
             case 10:
-                GameObject bomb3 = Instantiate(playerBomb, transform.position, transform.rotation);
-                GameObject bulletRight3 = Instantiate(playerBullet, transform.position + Vector3.right * 0.3f, transform.rotation);
-                GameObject bulletLeft3 = Instantiate(playerBullet, transform.position + Vector3.left * 0.25f, transform.rotation);
-                GameObject bulletRight4 = Instantiate(playerBullet, transform.position + Vector3.right * 0.6f, transform.rotation);
-                GameObject bulletLeft4 = Instantiate(playerBullet, transform.position + Vector3.left * 0.5f, transform.rotation);
+                //GameObject bomb3 = Instantiate(playerBomb, transform.position, transform.rotation);
+                //GameObject bulletRight3 = Instantiate(playerBullet, transform.position + Vector3.right * 0.3f, transform.rotation);
+                //GameObject bulletLeft3 = Instantiate(playerBullet, transform.position + Vector3.left * 0.25f, transform.rotation);
+                //GameObject bulletRight4 = Instantiate(playerBullet, transform.position + Vector3.right * 0.6f, transform.rotation);
+                //GameObject bulletLeft4 = Instantiate(playerBullet, transform.position + Vector3.left * 0.5f, transform.rotation);
+
+                GameObject bulletRight3 = objectPooling.MakeObject("PlayerBulletA");
+                GameObject bulletRight4 = objectPooling.MakeObject("PlayerBulletA");
+                GameObject bulletLeft3 = objectPooling.MakeObject("PlayerBulletA");
+                GameObject bulletLeft4 = objectPooling.MakeObject("PlayerBulletA");
+                GameObject bomb3 = objectPooling.MakeObject("PlayerBulletB");
+                bomb3.transform.position = transform.position;
+                bulletRight3.transform.position = transform.position + Vector3.right * 0.3f;
+                bulletRight4.transform.position = transform.position + Vector3.left * 0.25f;
+                bulletLeft3.transform.position = transform.position + Vector3.right * 0.6f;
+                bulletLeft4.transform.position = transform.position + Vector3.left * 0.5f;
+
+                bomb3.transform.rotation = transform.rotation;
+                bulletRight3.transform.rotation = transform.rotation;
+                bulletRight4.transform.rotation = transform.rotation;
+                bulletLeft3.transform.rotation = transform.rotation;
+                bulletLeft4.transform.rotation = transform.rotation;
 
                 Rigidbody2D rigid2D_bomb3 = bomb3.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigid2DRight3 = bulletRight3.GetComponent<Rigidbody2D>();
@@ -254,7 +298,8 @@ public class Player : MonoBehaviour
                 manager.RespawnPlayer();
             }
             gameObject.SetActive(false);
-            Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
 
         }
 
@@ -279,8 +324,9 @@ public class Player : MonoBehaviour
                     }
                     break;
             }
-            // destroy items
-            Destroy(collision.gameObject);
+            // destroy items -- object pooling
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 

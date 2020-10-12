@@ -17,6 +17,7 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
+    #region Variables
     // background moving speed
     [SerializeField]
     float backgroundSpeed;
@@ -29,13 +30,18 @@ public class BackgroundScroller : MonoBehaviour
     [SerializeField]
     float positionZ;
 
+    #endregion
+
+    #region Unity_Method
     // Update is called once per frame
     void Update()
     {
         Move();
         CheckBounds();
     }
+    #endregion
 
+    #region Custom_Method
     private void Move()
     {
         //var = auto in c++
@@ -58,5 +64,6 @@ public class BackgroundScroller : MonoBehaviour
             Reset();
         }
     }
+    #endregion
 
 }
