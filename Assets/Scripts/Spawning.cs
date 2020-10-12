@@ -5,18 +5,21 @@ using UnityEngine;
 /// <summary>
 /// Name: Junho Kim
 /// Student#: 101136986
-/// The Source file name: ObjectPooling.cs
+/// The Source file name: Spawning.cs
 /// Date last Modified: 2020-10-12
 /// Program description
-///  - Object Pooling - use arrays to contain objects, and when they are needed, i will generate (for optimization).
-///                   - create objects before runtime. 
+///  - Use text file to manage enemies' spawning points
 ///  
 /// Revision History
-/// 2020-10-12: Object pooling
+/// 2020-10-12: new script.
 /// </summary>
 /// 
 
 public class Spawning 
 {
-
+    #region Variables
+    public float delay;
+    public string enemyType;
+    public int spawnPoint;
+    #endregion
 }
