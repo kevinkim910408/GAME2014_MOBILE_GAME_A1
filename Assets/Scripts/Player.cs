@@ -258,6 +258,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Trigger_Method
     //when player hit the screen border
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -352,6 +353,6 @@ public class Player : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    
 }

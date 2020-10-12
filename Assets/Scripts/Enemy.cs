@@ -165,29 +165,6 @@ public class Enemy : MonoBehaviour
         spriteRenderer.sprite = sprites[0];
 
     }
-    #endregion
-
-    // Enemies and Player Bullets cannot go out of the Border
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "BulletBorder")
-        {
-            // if enemy go out of the screen - object pooling
-            gameObject.SetActive(false);
-            transform.rotation = Quaternion.identity;
-
-        }
-        else if (collision.gameObject.tag == "PlayerBullet")
-        {
-            // if enemy hit bullet
-            PlayerBullet playerbullet = collision.gameObject.GetComponent<PlayerBullet>();
-            OnHit(playerbullet.damage);
-
-            //delete player bullet - object pooling
-            //Destroy(collision.gameObject);
-            collision.gameObject.SetActive(false);
-        }
-    }
 
     void EnemyFire()
     {
@@ -195,7 +172,7 @@ public class Enemy : MonoBehaviour
         if (currentReloadingTime < maxReloadingTime)
             return;
 
-        if(enemyName == "L")
+        if (enemyName == "L")
         {
             //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
             // GameObject bullet = Instantiate(EnemyBulletA, transform.position, transform.rotation);
@@ -203,7 +180,7 @@ public class Enemy : MonoBehaviour
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
 
-             Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
+            Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
 
             //Vector between enemies and player
             Vector3 dirVec = player.transform.position - transform.position;
@@ -244,5 +221,30 @@ public class Enemy : MonoBehaviour
     {
         currentReloadingTime += Time.deltaTime;
     }
+    #endregion
 
+    #region Trigger_Method
+    // Enemies and Player Bullets cannot go out of the Border
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "BulletBorder")
+        {
+            // if enemy go out of the screen - object pooling
+            gameObject.SetActive(false);
+            transform.rotation = Quaternion.identity;
+
+        }
+        else if (collision.gameObject.tag == "PlayerBullet")
+        {
+            // if enemy hit bullet
+            PlayerBullet playerbullet = collision.gameObject.GetComponent<PlayerBullet>();
+            OnHit(playerbullet.damage);
+
+            //delete player bullet - object pooling
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+        }
+    }
+
+    #endregion
 }

@@ -25,6 +25,7 @@ public class PlayerBullet : MonoBehaviour
 
     #endregion
 
+    #region Trigger_Method
     // Bullet destory if it hits the border
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,4 +36,6 @@ public class PlayerBullet : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    #endregion
 }
