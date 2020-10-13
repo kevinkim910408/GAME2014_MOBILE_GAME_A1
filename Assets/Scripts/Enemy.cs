@@ -66,6 +66,12 @@ public class Enemy : MonoBehaviour
     // Boss animation
     Animator animator;
 
+    // Boss Pattern
+    public int patternIndex;
+    public int currentPatternCount;
+    public int[] maxPatternCount;
+
+
     #endregion
 
     #region Unity_Method
@@ -80,10 +86,15 @@ public class Enemy : MonoBehaviour
     }
 
     // After set false (object pooling) - reset their hp
-    private void OnEnable()
+     void OnEnable()
     {
         switch (enemyName)
         {
+            case "Boss":
+                hp = 5000;
+                Debug.Log("Stop");
+                Invoke("Stop", 3f);
+                break;
             case "L":
                 hp = 60;
                 break;
@@ -110,6 +121,110 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Custom_Method
+
+    // Let Boss Stop going down
+    void Stop()
+    {
+        if (!gameObject.activeSelf)
+            return;
+
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.velocity = Vector2.zero;
+        Invoke("UsePattern", 2.0f);
+    }
+    // Boss use patterns
+    void UsePattern()
+    {
+        patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
+
+        // if patterns back to here, need to make currentPatternCount's value = 0;
+        currentPatternCount = 0;
+        switch (patternIndex)
+        {
+            case 0:
+                Debug.Log("FireFront");
+                FireFront();
+                break;
+            case 1:
+                Debug.Log("FireShot");
+                FireShot();
+                break;
+            case 2:
+                Debug.Log("FireArc");
+                FireArc();
+                break;
+            case 3:
+                Debug.Log("FireAround");
+                FireAround();
+                break;
+        }
+    }
+
+    // Boss Pattens
+    void FireFront()
+    {
+        // pattern count increase
+        currentPatternCount++;
+
+        if(currentPatternCount < maxPatternCount[patternIndex]  )
+        {
+            // re-use the same pattern
+            Invoke("FireFront", 2.0f);
+        }
+        else
+        {
+            // back to the function contains all the patterns and choose pattern.
+            Invoke("UsePattern", 3.0f);
+        }
+    }
+    void FireShot()
+    {
+        // pattern count increase
+        currentPatternCount++;
+
+        if (currentPatternCount < maxPatternCount[patternIndex])
+        {
+            // re-use the same pattern
+            Invoke("FireShot", 2.0f);
+        }
+        else
+        {
+            // back to the function contains all the patterns and choose pattern.
+            Invoke("UsePattern", 3.0f);
+        }
+    }
+    void FireArc()
+    {
+        // pattern count increase
+        currentPatternCount++;
+
+        if (currentPatternCount < maxPatternCount[patternIndex])
+        {
+            // re-use the same pattern
+            Invoke("FireArc", 1.0f);
+        }
+        else
+        {
+            // back to the function contains all the patterns and choose pattern.
+            Invoke("UsePattern", 3.0f);
+        }
+    }
+    void FireAround()
+    {
+        // pattern count increase
+        currentPatternCount++;
+
+        if (currentPatternCount < maxPatternCount[patternIndex])
+        {
+            // re-use the same pattern
+            Invoke("FireAround", 0.7f);
+        }
+        else
+        {
+            // back to the function contains all the patterns and choose pattern.
+            Invoke("UsePattern", 3.0f);
+        }
+    }
 
     // Enemy hit by Player
     void OnHit(int damage)

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e310b9336b35c44ea80cac4bff675f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.5
+  moveSpeed: 0.5
   hp: 5000
   sprites: []
   EnemyBulletA: {fileID: 0}
@@ -167,3 +167,6 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyScore: 10000
   objectPooling: {fileID: 0}
+  patternIndex: -1
+  currentPatternCount: 0
+  maxPatternCount: 0200000003000000640000000a000000

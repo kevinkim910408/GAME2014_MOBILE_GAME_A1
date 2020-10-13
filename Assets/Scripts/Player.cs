@@ -209,6 +209,7 @@ public class Player : MonoBehaviour
                 rigid2DLeft2.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse);
                 break;
             case 10:
+            default:
                 //GameObject bomb3 = Instantiate(playerBomb, transform.position, transform.rotation);
                 //GameObject bulletRight3 = Instantiate(playerBullet, transform.position + Vector3.right * 0.3f, transform.rotation);
                 //GameObject bulletLeft3 = Instantiate(playerBullet, transform.position + Vector3.left * 0.25f, transform.rotation);
