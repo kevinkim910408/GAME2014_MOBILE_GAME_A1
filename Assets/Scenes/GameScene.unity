@@ -3724,12 +3724,15 @@ MonoBehaviour:
   enemy_L_Prefab: {fileID: 3470703491861729721, guid: db09b22e5224a494ab7bff4cf72e6d68, type: 3}
   enemy_M_Prefab: {fileID: 1084462526624225768, guid: aca4a2681d0cc9d4ea8b04d1472ad7bb, type: 3}
   enemy_S_Prefab: {fileID: 5667621772767422641, guid: 434c89ca0dbc11247992b2b237690a28, type: 3}
+  enemy_Boss_Prefab: {fileID: 5920605824628138661, guid: 3befe880cf2ecc54383468acb7629b14, type: 3}
   item_Coin_Prefab: {fileID: 6282400275892136574, guid: 18557db5b637ec04187c8662028995e8, type: 3}
   item_Power_Prefab: {fileID: 7491698844974409654, guid: 58e09b4bc52e91943b234bcb26157cde, type: 3}
   Bullet_Player_A_Prefab: {fileID: 8215350343324855190, guid: 96220299e2502c045967f2dc79d4387a, type: 3}
   Bullet_Player_B_Prefab: {fileID: 2555514610855335614, guid: 44c601b4f7e477942a2f2f44a4af17f8, type: 3}
   Bullet_Enemy_A_Prefab: {fileID: 8215350343324855190, guid: 371111528ff672b4286304997ec61f43, type: 3}
   Bullet_Enemy_B_Prefab: {fileID: 8215350343324855190, guid: 416b88204a418824b9362149478b6081, type: 3}
+  Bullet_Boss_A_Prefab: {fileID: 8215350343324855190, guid: 3b4290499168ef0489b5b529b5a09f0a, type: 3}
+  Bullet_Boss_B_Prefab: {fileID: 8215350343324855190, guid: 1107bbd05f1b45d44b99a456a3f23adf, type: 3}
 --- !u!4 &1603953667
 Transform:
   m_ObjectHideFlags: 0
@@ -4387,7 +4390,7 @@ MonoBehaviour:
   - {fileID: 489738122}
   - {fileID: 1817771063}
   - {fileID: 2111179458}
-  maxDelay: 2
+  NextDelay: 0
   currentDelay: 0
   player: {fileID: 8408636964082676382}
   scoreText: {fileID: 949041126}
@@ -4397,6 +4400,8 @@ MonoBehaviour:
   - {fileID: 1015567578}
   gameover: {fileID: 1380568498}
   objectPooling: {fileID: 1603953666}
+  spawnIndex: 0
+  spawnEnd: 0
 --- !u!4 &1860964286
 Transform:
   m_ObjectHideFlags: 0

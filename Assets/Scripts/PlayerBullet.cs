@@ -23,6 +23,19 @@ public class PlayerBullet : MonoBehaviour
     //Bullet Damage
     public int damage;
 
+    public bool isRotate;
+
+    #endregion
+
+    #region Unity_Method
+    private void Update()
+    {
+        if (isRotate)
+        {
+            transform.Rotate(Vector3.forward * 10);
+        }
+    }
+
     #endregion
 
     #region Trigger_Method

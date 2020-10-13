@@ -6,7 +6,7 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Enmey.cs
-/// Date last Modified: 2020-10-12
+/// Date last Modified: 2020-10-13
 /// Program description
 ///  - This script is only for enemies. It contains enemies hp, and movespeed. Also contains enemies sprites to change when enemies are hit by player.
 ///  - if Enemies and the bullets hit the border --> destroy.
@@ -16,6 +16,7 @@ using UnityEngine;
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: inline comments + make code looks clear, Enmey can fire
 /// 2020-10-12: Enemy drops items
+/// 2020-10-13: Added functions about Boss
 /// </summary>
 /// 
 public class Enemy : MonoBehaviour
@@ -62,6 +63,9 @@ public class Enemy : MonoBehaviour
 
     public ObjectPooling objectPooling;
 
+    // Boss animation
+    Animator animator;
+
     #endregion
 
     #region Unity_Method
@@ -69,6 +73,10 @@ public class Enemy : MonoBehaviour
     {
         // GetComponents
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if(enemyName == "Boss")
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     // After set false (object pooling) - reset their hp
@@ -90,6 +98,9 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (enemyName == "Boss")
+            return;
+
         EnemyFire();
         Reload();
 
@@ -107,20 +118,31 @@ public class Enemy : MonoBehaviour
             return;
 
         hp -= damage;
-        //if hit - change sprite
-        spriteRenderer.sprite = sprites[1];
-        Invoke("ReturnSprite",0.1f);
+
+        if (enemyName == "Boss")
+        {
+            animator.SetTrigger("OnHit");
+        }
+        else
+        {
+            //if hit - change sprite
+            spriteRenderer.sprite = sprites[1];
+            Invoke("ReturnSprite", 0.1f);
+
+        }
+
+
 
         //destroy
-        if(hp <= 0)
+        if (hp <= 0)
         {
             // if Enemy dies, player get scores.
             Player playerLogic = player.GetComponent<Player>();
             // Enemy Score can set from the Prefabs
             playerLogic.score += enemyScore;
 
-            // when enemies dead, drop items - random
-            int random = Random.Range(0, 10);
+            // when enemies dead, drop items - random, if enemy == boss, no item
+            int random = enemyName == "Boss" ? 0 : Random.Range(0, 10);
             if (random <= 3) //70%
             {
                 // no item
@@ -227,7 +249,7 @@ public class Enemy : MonoBehaviour
     // Enemies and Player Bullets cannot go out of the Border
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "BulletBorder")
+        if(collision.gameObject.tag == "BulletBorder" && enemyName != "Boss")
         {
             // if enemy go out of the screen - object pooling
             gameObject.SetActive(false);

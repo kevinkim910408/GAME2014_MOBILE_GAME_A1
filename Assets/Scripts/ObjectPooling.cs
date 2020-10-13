@@ -6,13 +6,14 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: ObjectPooling.cs
-/// Date last Modified: 2020-10-12
+/// Date last Modified: 2020-10-13
 /// Program description
 ///  - Object Pooling - use arrays to contain objects, and when they are needed, i will generate (for optimization).
 ///                   - create objects before runtime. 
 ///  
 /// Revision History
 /// 2020-10-12: Object pooling
+/// 2020-10-13: Added functions about Boss
 /// </summary>
 /// 
 
@@ -23,17 +24,21 @@ public class ObjectPooling : MonoBehaviour
     public GameObject enemy_L_Prefab;
     public GameObject enemy_M_Prefab;
     public GameObject enemy_S_Prefab;
+    public GameObject enemy_Boss_Prefab;
     public GameObject item_Coin_Prefab;
     public GameObject item_Power_Prefab;
     public GameObject Bullet_Player_A_Prefab;
     public GameObject Bullet_Player_B_Prefab;
     public GameObject Bullet_Enemy_A_Prefab;
     public GameObject Bullet_Enemy_B_Prefab;
+    public GameObject Bullet_Boss_A_Prefab;
+    public GameObject Bullet_Boss_B_Prefab;
 
     // array contatins actual objects
     GameObject[] enemy_L;
     GameObject[] enemy_M;
     GameObject[] enemy_S;
+    GameObject[] enemy_Boss;
 
     GameObject[] item_Coin;
     GameObject[] item_Power;
@@ -42,6 +47,9 @@ public class ObjectPooling : MonoBehaviour
     GameObject[] Bullet_Player_B;
     GameObject[] Bullet_Enemy_A;
     GameObject[] Bullet_Enemy_B;
+
+    GameObject[] Bullet_Boss_A;
+    GameObject[] Bullet_Boss_B;
 
     // to manage making objects
     GameObject[] targetObjectPool;
@@ -54,6 +62,7 @@ public class ObjectPooling : MonoBehaviour
         enemy_L = new GameObject[20];
         enemy_M = new GameObject[20];
         enemy_S = new GameObject[20];
+        enemy_Boss = new GameObject[5];
 
         item_Coin = new GameObject[20];
         item_Power = new GameObject[20];
@@ -62,6 +71,9 @@ public class ObjectPooling : MonoBehaviour
         Bullet_Player_B = new GameObject[1000];
         Bullet_Enemy_A = new GameObject[1000];
         Bullet_Enemy_B = new GameObject[1000];
+
+        Bullet_Boss_A = new GameObject[1000];
+        Bullet_Boss_B = new GameObject[1000];
 
         Generate();
     }
@@ -90,6 +102,13 @@ public class ObjectPooling : MonoBehaviour
         {
             enemy_S[i] = Instantiate(enemy_S_Prefab);
             enemy_S[i].SetActive(false);
+        }
+
+        //Boss
+        for (int i = 0; i < enemy_Boss.Length; ++i)
+        {
+            enemy_Boss[i] = Instantiate(enemy_Boss_Prefab);
+            enemy_Boss[i].SetActive(false);
         }
 
         // Generate Items
@@ -133,6 +152,21 @@ public class ObjectPooling : MonoBehaviour
             Bullet_Enemy_B[i].SetActive(false);
 
         }
+
+
+        for (int i = 0; i < Bullet_Boss_A.Length; ++i)
+        {
+            Bullet_Boss_A[i] = Instantiate(Bullet_Boss_A_Prefab);
+            Bullet_Boss_A[i].SetActive(false);
+
+        }
+
+        for (int i = 0; i < Bullet_Boss_B.Length; ++i)
+        {
+            Bullet_Boss_B[i] = Instantiate(Bullet_Boss_B_Prefab);
+            Bullet_Boss_B[i].SetActive(false);
+
+        }
     }
     
     // actual function of making object
@@ -150,6 +184,11 @@ public class ObjectPooling : MonoBehaviour
                 break;
             case "EnemyS":
                 targetObjectPool = enemy_S;
+                break;
+
+            // Boss
+            case "EnemyB":
+                targetObjectPool = enemy_Boss;
                 break;
 
             // Items
@@ -172,6 +211,14 @@ public class ObjectPooling : MonoBehaviour
                 break;
             case "EnemyBulletB":
                 targetObjectPool = Bullet_Enemy_B;
+                break;
+
+            //Boss
+            case "BossBulletA":
+                targetObjectPool = Bullet_Boss_A;
+                break;
+            case "BossBulletB":
+                targetObjectPool = Bullet_Boss_B;
                 break;
         }
 

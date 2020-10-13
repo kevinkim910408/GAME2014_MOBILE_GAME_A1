@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6706279486730852487}
   - component: {fileID: 1098511417393346170}
-  - component: {fileID: 709937103530034516}
+  - component: {fileID: 2512879363544745180}
   - component: {fileID: 4508529489189953824}
   - component: {fileID: -2413786402136171287}
   m_Layer: 0
-  m_Name: EnemyBullet
+  m_Name: EnemyBossBullet 2
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8215350343324855190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.06, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1433929847405453274, guid: e7529458cb8ffb540b022e26b1ff3527, type: 3}
+  m_Sprite: {fileID: 4407533109776081695, guid: e7529458cb8ffb540b022e26b1ff3527, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &709937103530034516
-BoxCollider2D:
+--- !u!68 &2512879363544745180
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,19 +98,22 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06, y: 0.1}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.4}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.3026322, y: 0.11307527}
+  - {x: -0.0457647, y: -0.10896346}
+  - {x: 0.22308192, y: 0.13078448}
+  - {x: 0.19795278, y: 0.27909857}
+  - {x: 0.1219299, y: 0.33167645}
+  - {x: -0.038826015, y: 0.17990898}
+  - {x: -0.23112234, y: 0.3183908}
+  - {x: -0.2814721, y: 0.16515526}
+  - {x: -0.30591828, y: 0.11101931}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!50 &4508529489189953824
 Rigidbody2D:
   serializedVersion: 4
@@ -145,4 +148,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  isRotate: 1
