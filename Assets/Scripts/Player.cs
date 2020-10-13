@@ -6,7 +6,7 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Player.cs
-/// Date last Modified: 2020-10-11
+/// Date last Modified: 2020-10-13
 /// Program description
 ///  - Contains basic player needs - speeds, animation, bullets.
 ///  - movement
@@ -19,6 +19,7 @@ using UnityEngine;
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes
 /// 2020-10-11: player can get items.
+/// 2020-10-13: added invincibility function
 /// </summary> 
 public class Player : MonoBehaviour
 {
@@ -69,7 +70,11 @@ public class Player : MonoBehaviour
     public int maxPower;
 
     // object pooling
-    public ObjectPooling objectPooling; 
+    public ObjectPooling objectPooling;
+
+    // invincibility after respawn
+    public bool isRespawn;
+    SpriteRenderer spriteRenderer;
 
     #endregion
 
@@ -77,6 +82,14 @@ public class Player : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void OnEnable()
+    {
+        // after respawn
+        invincibility();
+        Invoke("invincibility", 3.0f);
     }
 
     // Update is called once per frame
@@ -91,6 +104,21 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Custom_Method
+
+    void invincibility()
+    {
+        isRespawn = !isRespawn;
+        if (isRespawn)
+        {
+            isRespawn = true;
+            spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        }
+        else
+        {
+            isRespawn = false;
+            spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        }
+    }
     void PlayerMove()
     {
         float moveX = Input.GetAxisRaw("Horizontal"); // GetAxis - soft movement
@@ -284,6 +312,9 @@ public class Player : MonoBehaviour
         // player is shot by enemy (die)
         else if ((collision.gameObject.tag == "Enemy") ||(collision.gameObject.tag == "EnemyBullet"))
         {
+            if (isRespawn)
+                return;
+
             if (isHit)
                 return;
 
