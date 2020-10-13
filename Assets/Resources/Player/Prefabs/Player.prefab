@@ -101,11 +101,17 @@ MonoBehaviour:
   moveSpeed: 5
   bulletSpeed: 10
   bombSpeed: 10
-  energy: 0
   playerBullet: {fileID: 8215350343324855190, guid: 96220299e2502c045967f2dc79d4387a, type: 3}
   playerBomb: {fileID: 2555514610855335614, guid: 44c601b4f7e477942a2f2f44a4af17f8, type: 3}
   maxReloadingTime: 0.3
   currentReloadingTime: 0
+  manager: {fileID: 0}
+  life: 0
+  score: 0
+  isHit: 0
+  curentPower: 1
+  maxPower: 0
+  objectPooling: {fileID: 0}
 --- !u!61 &8408636965519374807
 BoxCollider2D:
   m_ObjectHideFlags: 0

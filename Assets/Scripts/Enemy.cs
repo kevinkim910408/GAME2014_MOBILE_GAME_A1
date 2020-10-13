@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
         switch (enemyName)
         {
             case "Boss":
-                hp = 5000;
+                hp = 3000;
                 Debug.Log("Stop");
                 Invoke("Stop", 3f);
                 break;
@@ -163,6 +163,33 @@ public class Enemy : MonoBehaviour
     // Boss Pattens
     void FireFront()
     {
+        if (hp <= 0) 
+            return;
+        // Fire Logic
+        GameObject bulletR = objectPooling.MakeObject("EnemyBulletA");
+        GameObject bulletRR = objectPooling.MakeObject("EnemyBulletA");
+        GameObject bulletL = objectPooling.MakeObject("EnemyBulletA");
+        GameObject bulletLL = objectPooling.MakeObject("EnemyBulletA");
+        bulletR.transform.position = transform.position + Vector3.right * 0.3f;
+        bulletRR.transform.position = transform.position + Vector3.right * 0.45f;
+        bulletL.transform.position = transform.position + Vector3.left * 0.3f;
+        bulletLL.transform.position = transform.position + Vector3.left * 0.45f;
+
+        bulletR.transform.rotation = transform.rotation;
+        bulletRR.transform.rotation = transform.rotation;
+        bulletL.transform.rotation = transform.rotation;
+        bulletLL.transform.rotation = transform.rotation;
+
+        Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidRR = bulletRR.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidLL = bulletLL.GetComponent<Rigidbody2D>();
+
+        rigidR.AddForce(Vector2.down * 5.0f, ForceMode2D.Impulse);
+        rigidRR.AddForce(Vector2.down * 5.0f, ForceMode2D.Impulse);
+        rigidL.AddForce(Vector2.down * 5.0f, ForceMode2D.Impulse);
+        rigidLL.AddForce(Vector2.down * 5.0f, ForceMode2D.Impulse);
+
         // pattern count increase
         currentPatternCount++;
 
@@ -179,6 +206,23 @@ public class Enemy : MonoBehaviour
     }
     void FireShot()
     {
+        if (hp <= 0)
+            return;
+        // fire logic
+        for (int i = 0; i < 5; ++i)
+        {
+            GameObject bullet = objectPooling.MakeObject("BossBulletA");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+
+            Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
+
+            Vector2 dirVec = player.transform.position - transform.position;
+            Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0.0f, 2.0f));
+            dirVec += ranVec;
+            rigid2D.AddForce(dirVec.normalized * 5.0f, ForceMode2D.Impulse);
+        }
+
         // pattern count increase
         currentPatternCount++;
 
@@ -195,6 +239,18 @@ public class Enemy : MonoBehaviour
     }
     void FireArc()
     {
+        if (hp <= 0)
+            return;
+        // fire logic
+        GameObject bullet = objectPooling.MakeObject("BossBulletB");
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = Quaternion.identity; // no rotation
+
+        Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 dirVec = new Vector2(Mathf.Sin(currentPatternCount),-1);
+        rigid2D.AddForce(dirVec.normalized * 10.0f, ForceMode2D.Impulse);
+
         // pattern count increase
         currentPatternCount++;
 
@@ -211,6 +267,24 @@ public class Enemy : MonoBehaviour
     }
     void FireAround()
     {
+        if (hp <= 0)
+            return;
+        // fire logic
+        int roundNumberA = 30;
+        int roundNumberB = 20;
+        int roundNumber = currentPatternCount % 2 == 0 ? roundNumberA : roundNumberB; 
+        for (int i = 0; i < roundNumber; ++i)
+        {
+            GameObject bullet = objectPooling.MakeObject("BossBulletA");
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+
+            Rigidbody2D rigid2D = bullet.GetComponent<Rigidbody2D>();
+
+            Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / roundNumber), Mathf.Sin(Mathf.PI * 2 * i / roundNumber));
+            rigid2D.AddForce(dirVec.normalized * 3.0f, ForceMode2D.Impulse);
+        }
+
         // pattern count increase
         currentPatternCount++;
 
