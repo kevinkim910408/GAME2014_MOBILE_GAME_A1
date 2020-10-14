@@ -199,13 +199,13 @@ public class Player : MonoBehaviour
         // Keyboard Move
 
         //if player touch the screen - X-axis
-        if ((touchRight && moveX == 1) || (touchLeft && moveX == -1))
+        if ((touchRight && moveX == 1) || (touchLeft && moveX == -1) || !isControl)
         {
             // make movement 0
             moveX = 0;
         }
         //if player touch the screen - Y-axis
-        if ((touchTop && moveY == 1) || (touchBottom && moveY == -1))
+        if ((touchTop && moveY == 1) || (touchBottom && moveY == -1) || !isControl)
         {
             // make movement 0
             moveY = 0;
