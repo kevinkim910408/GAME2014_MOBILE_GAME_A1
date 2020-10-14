@@ -6,20 +6,21 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Player.cs
-/// Date last Modified: 2020-10-13
+/// Date last Modified: 2020-10-14
 /// Program description
 ///  - Contains basic player needs - speeds, animation, bullets.
-///  - movement
+///  - movement -> both keyboard (for debug), touch input (for actual game) are available
 ///  - if player gets energy - power up
 ///  - borders - player cannot go out of the screen.
 ///  - fire reloading time.
-///  - 
+///  
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes
 /// 2020-10-11: player can get items.
 /// 2020-10-13: added invincibility function
+/// 2020-10-14: player touch inputs
 /// </summary> 
 public class Player : MonoBehaviour
 {

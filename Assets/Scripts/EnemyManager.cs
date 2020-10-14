@@ -9,19 +9,25 @@ using System.IO;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: EnmeyManager.cs
-/// Date last Modified: 2020-10-12
+/// Date last Modified: 2020-10-14
 /// Program description
-///  - Managing enemies' spawn.
+///  - Managing enemies' spawn and stages
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: Add more Enemy spawn place, inline comments, make code looks clear, removed unnecessary codes
 /// 2020-10-12: Object Pooling, spawning enemies with text file, no more random generation
+/// 2020-10-14: manage stage
 /// </summary>
 /// 
 public class EnemyManager : MonoBehaviour
 {
     #region Variables
+    // manage stages
+    public int stage;
+    public Animator stageStartAnim;
+    public Animator stageClearAnim;
+
     // Enemies' object that EnemyManger can instantiate. Made by array because there are total 3 enemies so far
     [SerializeField]
     string[] enemies;
@@ -57,7 +63,7 @@ public class EnemyManager : MonoBehaviour
     {
         spawnList = new List<Spawning>();
         enemies = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
-        ReadSpawnFile();
+        StageStart();
     }
     private void Update()
     {
@@ -85,6 +91,30 @@ public class EnemyManager : MonoBehaviour
 
     #region Custom_Method
 
+    // manage stage method
+    public void StageStart()
+    {
+        // stage ui
+        stageStartAnim.SetTrigger("On");
+
+        // enemy spawn file read
+        ReadSpawnFile();
+
+        // fade in
+    }
+    public void StageEnd()
+    {
+        // clear stage ui 
+        stageClearAnim.SetTrigger("On");
+        //stage number increase
+        stage++;
+
+        // fade out
+
+        // re locate player's position
+    }
+
+
     void ReadSpawnFile()
     {
         // initialize
@@ -92,8 +122,8 @@ public class EnemyManager : MonoBehaviour
         spawnIndex = 0;
         spawnEnd = false;
 
-        // read file
-        TextAsset file = Resources.Load("stage0") as TextAsset;
+        // read file - stage
+        TextAsset file = Resources.Load("stage"+ stage) as TextAsset;
         StringReader stringReader = new StringReader(file.text);
 
         while(stringReader != null)
