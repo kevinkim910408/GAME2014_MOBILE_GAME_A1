@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
     // for joy stick controller
     public bool[] joyControl;
     public bool isControl;
+    public bool isFire;
 
     #endregion
 
@@ -193,9 +194,6 @@ public class Player : MonoBehaviour
             moveY = -1.0f;
         }
 
-
-
-
         // Keyboard Move
 
         //if player touch the screen - X-axis
@@ -226,12 +224,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ButtonFireDown()
+    {
+        isFire = true;
+    }
+
+    public void  ButtonFireUp()
+    {
+        isFire = false;
+    }
+
     void PlayerFire()
     {
         // Mouse Left Click
-        if (!Input.GetButton("Fire1"))
+        //if (!Input.GetButton("Fire1"))
+        //return;
+
+        // Touch Controller
+        if (!isFire)
             return;
-            
+
+
         //if reloading time is not max, cannot fire.
         if (currentReloadingTime < maxReloadingTime)
             return;
