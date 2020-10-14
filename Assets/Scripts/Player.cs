@@ -76,6 +76,10 @@ public class Player : MonoBehaviour
     public bool isRespawn;
     SpriteRenderer spriteRenderer;
 
+    // for joy stick controller
+    public bool[] joyControl;
+    public bool isControl;
+
     #endregion
 
     #region Unity_Method
@@ -105,6 +109,24 @@ public class Player : MonoBehaviour
 
     #region Custom_Method
 
+    public void JoyStick(int type)
+    {
+        for (int i = 0; i < 9; ++i)
+        {
+            joyControl[i] = i == type;
+        }
+    }
+
+    public void JoyDown()
+    {
+        isControl = true;
+    }
+
+    public void JoyUp()
+    {
+        isControl = false;
+    }
+
     void invincibility()
     {
         isRespawn = !isRespawn;
@@ -123,6 +145,58 @@ public class Player : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal"); // GetAxis - soft movement
         float moveY = Input.GetAxisRaw("Vertical"); // GetAxisRaw - instantly move
+
+        // Joy Stick Move
+        if(joyControl[0]) 
+        { 
+            moveX = -1.0f; 
+            moveY = 1.0f;  
+        }
+        if (joyControl[1])
+        {
+            moveX = 0.0f;
+            moveY = 1.0f;
+        }
+        if (joyControl[2])
+        {
+            moveX = 1.0f;
+            moveY = 1.0f;
+        }
+        if (joyControl[3])
+        {
+            moveX = -1.0f;
+            moveY = 0.0f;
+        }
+        if (joyControl[4])
+        {
+            moveX = 0.0f;
+            moveY = 0.0f;
+        }
+        if (joyControl[5])
+        {
+            moveX = 1.0f;
+            moveY = 0.0f;
+        }
+        if (joyControl[6])
+        {
+            moveX = -1.0f;
+            moveY = -1.0f;
+        }
+        if (joyControl[7])
+        {
+            moveX = 0.0f;
+            moveY = -1.0f;
+        }
+        if (joyControl[8])
+        {
+            moveX = 1.0f;
+            moveY = -1.0f;
+        }
+
+
+
+
+        // Keyboard Move
 
         //if player touch the screen - X-axis
         if ((touchRight && moveX == 1) || (touchLeft && moveX == -1))
