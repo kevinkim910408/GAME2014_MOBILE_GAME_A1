@@ -6460,7 +6460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f878896481eaa884db79634612721347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 1
+  stage: 0
   stageStartAnim: {fileID: 275704937}
   stageClearAnim: {fileID: 368680175}
   enemies:
@@ -6999,7 +6999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8408636965519374810, guid: d4bc217567cb74347b06b35ffe3416c5, type: 3}
       propertyPath: curentPower
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8408636965519374810, guid: d4bc217567cb74347b06b35ffe3416c5, type: 3}
       propertyPath: objectPooling

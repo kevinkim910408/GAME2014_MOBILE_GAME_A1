@@ -63,7 +63,8 @@ public class EnemyManager : MonoBehaviour
     {
         spawnList = new List<Spawning>();
         enemies = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
-        StageStart();
+        //StageStart();
+        ReadSpawnFile();
     }
     private void Update()
     {
@@ -91,28 +92,28 @@ public class EnemyManager : MonoBehaviour
 
     #region Custom_Method
 
-    // manage stage method
-    public void StageStart()
-    {
-        // stage ui
-        stageStartAnim.SetTrigger("On");
+    //// manage stage method - fail
+    //public void StageStart()
+    //{
+    //    // stage ui
+    //    stageStartAnim.SetTrigger("On");
 
-        // enemy spawn file read
-        ReadSpawnFile();
+    //    // enemy spawn file read
+    //    ReadSpawnFile();
 
-        // fade in
-    }
-    public void StageEnd()
-    {
-        // clear stage ui 
-        stageClearAnim.SetTrigger("On");
-        //stage number increase
-        stage++;
+    //    // fade in
+    //}
+    //public void StageEnd()
+    //{
+    //    // clear stage ui 
+    //    stageClearAnim.SetTrigger("On");
+    //    //stage number increase
+    //    stage++;
 
-        // fade out
+    //    // fade out
 
-        // re locate player's position
-    }
+    //    // re locate player's position
+    //}
 
 
     void ReadSpawnFile()
