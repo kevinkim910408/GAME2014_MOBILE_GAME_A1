@@ -71,6 +71,8 @@ public class Enemy : MonoBehaviour
     public int currentPatternCount;
     public int[] maxPatternCount;
 
+    // sound
+    private AudioSource enemyDieSound;
 
     #endregion
 
@@ -79,6 +81,7 @@ public class Enemy : MonoBehaviour
     {
         // GetComponents
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyDieSound = GetComponent<AudioSource>();
         if(enemyName == "Boss")
         {
             animator = GetComponent<Animator>();
@@ -329,6 +332,8 @@ public class Enemy : MonoBehaviour
             Player playerLogic = player.GetComponent<Player>();
             // Enemy Score can set from the Prefabs
             playerLogic.score += enemyScore;
+
+            enemyDieSound.Play();
 
             // when enemies dead, drop items - random, if enemy == boss, no item
             int random = enemyName == "Boss" ? 0 : Random.Range(0, 10);

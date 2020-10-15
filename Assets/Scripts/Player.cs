@@ -6,7 +6,7 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Player.cs
-/// Date last Modified: 2020-10-14
+/// Date last Modified: 2020-10-15
 /// Program description
 ///  - Contains basic player needs - speeds, animation, bullets.
 ///  - movement -> both keyboard (for debug), touch input (for actual game) are available
@@ -21,6 +21,7 @@ using UnityEngine;
 /// 2020-10-11: player can get items.
 /// 2020-10-13: added invincibility function
 /// 2020-10-14: player touch inputs
+/// 2020-10-15: Sound Work
 /// </summary> 
 public class Player : MonoBehaviour
 {
@@ -82,6 +83,9 @@ public class Player : MonoBehaviour
     public bool isControl;
     public bool isFire;
 
+    // Sounds
+    private AudioSource dieSound;
+
     #endregion
 
     #region Unity_Method
@@ -89,6 +93,7 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        dieSound = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -400,12 +405,11 @@ public class Player : MonoBehaviour
         // player is shot by enemy (die)
         else if ((collision.gameObject.tag == "Enemy") ||(collision.gameObject.tag == "EnemyBullet"))
         {
+            
             if (isRespawn)
                 return;
-
             if (isHit)
                 return;
-
             isHit = true;
             life--;
             manager.UpdateLife(life);
