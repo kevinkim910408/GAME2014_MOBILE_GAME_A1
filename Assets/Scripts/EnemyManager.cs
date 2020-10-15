@@ -232,7 +232,8 @@ public class EnemyManager : MonoBehaviour
     private void RespawnPlayerExe()
     {
         // this position is measured in the scene (0, -4, 0)
-        player.transform.position = Vector3.down * 4.0f;
+        player.transform.position = Vector3.down * 2.88f;
+
         player.SetActive(true);
 
         Player playerLogic = player.GetComponent<Player>();

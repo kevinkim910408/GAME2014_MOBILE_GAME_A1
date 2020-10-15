@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e310b9336b35c44ea80cac4bff675f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 2
   hp: 20
   sprites:
   - {fileID: -5327338546894765724, guid: d5733bf93411a3540bc03d03306a96f7, type: 3}
@@ -161,6 +161,9 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyScore: 500
   objectPooling: {fileID: 0}
+  patternIndex: 0
+  currentPatternCount: 0
+  maxPatternCount: 
 --- !u!1001 &3706092241696401760
 PrefabInstance:
   m_ObjectHideFlags: 0
