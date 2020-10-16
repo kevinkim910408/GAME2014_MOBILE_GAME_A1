@@ -6,12 +6,13 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: SoundManager.cs
-/// Date last Modified: 2020-10-15
+/// Date last Modified: 2020-10-16
 /// Program description
 ///  - Manage all the sounds
 ///  
 /// Revision History
 /// 2020-10-15: manage bgm, shooting, and die sounds
+/// 2020-10-16: change to singleton, fix bugs
 /// </summary>
 /// 
 
@@ -20,61 +21,102 @@ using UnityEngine;
 public class Sound
 {
     public string soundName;
-    public AudioClip clip;
+    public AudioClip audioClip;
 }
+
 
 public class SoundManager : MonoBehaviour
 {
+    #region Variables
+    // can access from anywhere - singleton
+    public static SoundManager instance;
+    public string[] playSoundName;
 
-    public static SoundManager instance; 
+    [Header("SFX")]
+    public AudioSource[] audioSourceSFX;
+    public Sound[] sfxSounds;
 
-    [SerializeField]
-    Sound[] bgmSounds;
+    [Header("BGM")]
+    public AudioSource audioSourceBGM;
+    public Sound[] bgmSounds; // index 0: Game Scene BGM
 
-    [SerializeField]
-    Sound[] sfxSounds;
 
-    [SerializeField]
-    AudioSource bgmPlayer;
 
-    [SerializeField]
-    AudioSource[] sfxPlayer;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    #region UNITY_METHOD
+
+    #region Singleton
+    private void Awake()
     {
-        instance = this;
+        //singleton
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
+    private void Start()
+    {
+        playSoundName = new string[audioSourceSFX.Length];
         PlayBGM();
     }
+    #endregion
 
-    public void PlaySE(string soundName)
+    #region TO_PLAY_SOUND
+    public void PLaySE(string name)
     {
         for (int i = 0; i < sfxSounds.Length; ++i)
         {
-            if(soundName == sfxSounds[i].soundName)
+            if (name == sfxSounds[i].soundName)
             {
-                for(int j = 0; j < sfxPlayer.Length; ++j)
+                for (int j = 0; j < audioSourceSFX.Length; ++j)
                 {
-                    if (!sfxPlayer[j].isPlaying)
+                    if (!audioSourceSFX[j].isPlaying)
                     {
-                        sfxPlayer[j].clip = sfxSounds[j].clip;
-                        sfxPlayer[j].Play();
+                        playSoundName[j] = sfxSounds[i].soundName;
+                        audioSourceSFX[j].clip = sfxSounds[i].audioClip;
+                        audioSourceSFX[j].Play();
+
                         return;
                     }
                 }
-                Debug.Log(" all the sfx are using");
                 return;
             }
         }
-        Debug.Log("no sound effects");
     }
-
     public void PlayBGM()
     {
-        int random = Random.Range(0, 3);
-        bgmPlayer.clip = bgmSounds[random].clip;
-        bgmPlayer.Play();
+        audioSourceBGM.clip = bgmSounds[0].audioClip;
+        audioSourceBGM.Play();
+    }
+    #endregion
+
+    #region TO_STOP_SOUND
+    public void StopAllSE()
+    {
+        for (int i = 0; i < audioSourceSFX.Length; ++i)
+        {
+            audioSourceSFX[i].Stop();
+        }
     }
 
-
+    public void StopSE(string name)
+    {
+        for (int i = 0; i < audioSourceSFX.Length; ++i)
+        {
+            if (playSoundName[i] == name)
+            {
+                audioSourceSFX[i].Stop();
+                break;
+            }
+        }
+    }
+    #endregion
 }

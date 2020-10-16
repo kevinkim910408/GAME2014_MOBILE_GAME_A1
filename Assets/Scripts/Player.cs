@@ -83,6 +83,12 @@ public class Player : MonoBehaviour
     public bool isControl;
     public bool isFire;
 
+    // to Get SFX sound name 
+    [SerializeField]
+    private string ShootSound;
+    [SerializeField]
+    private string DieSound;
+
     #endregion
 
     #region Unity_Method
@@ -228,6 +234,7 @@ public class Player : MonoBehaviour
 
     public void ButtonFireDown()
     {
+        SoundManager.instance.PLaySE(ShootSound);
         isFire = true;
     }
 
@@ -245,7 +252,6 @@ public class Player : MonoBehaviour
         // Touch Controller
         if (!isFire)
             return;
-        SoundManager.instance.PlaySE("NormalGun_Ricochet1_cedarstudios");
 
         //if reloading time is not max, cannot fire.
         if (currentReloadingTime < maxReloadingTime)
@@ -401,7 +407,7 @@ public class Player : MonoBehaviour
         // player is shot by enemy (die)
         else if ((collision.gameObject.tag == "Enemy") ||(collision.gameObject.tag == "EnemyBullet"))
         {
-            SoundManager.instance.PlaySE("Player_Damagad");
+            SoundManager.instance.PLaySE(DieSound);
             if (isRespawn)
                 return;
             if (isHit)

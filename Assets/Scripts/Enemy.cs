@@ -71,7 +71,13 @@ public class Enemy : MonoBehaviour
     public int currentPatternCount;
     public int[] maxPatternCount;
 
-     #endregion
+    // to Get SFX sound name 
+    [SerializeField]
+    private string ShootSound;
+    [SerializeField]
+    private string DieSound;
+
+    #endregion
 
     #region Unity_Method
     private void Awake()
@@ -162,6 +168,8 @@ public class Enemy : MonoBehaviour
     // Boss Pattens
     void FireFront()
     {
+        SoundManager.instance.PLaySE(ShootSound);
+
         if (hp <= 0) 
             return;
         // Fire Logic
@@ -205,6 +213,8 @@ public class Enemy : MonoBehaviour
     }
     void FireShot()
     {
+        SoundManager.instance.PLaySE(ShootSound);
+
         if (hp <= 0)
             return;
         // fire logic
@@ -238,6 +248,8 @@ public class Enemy : MonoBehaviour
     }
     void FireArc()
     {
+        SoundManager.instance.PLaySE(ShootSound);
+
         if (hp <= 0)
             return;
         // fire logic
@@ -266,6 +278,8 @@ public class Enemy : MonoBehaviour
     }
     void FireAround()
     {
+        SoundManager.instance.PLaySE(ShootSound);
+
         if (hp <= 0)
             return;
         // fire logic
@@ -324,7 +338,7 @@ public class Enemy : MonoBehaviour
         //destroy
         if (hp <= 0)
         {
-            SoundManager.instance.PlaySE("small");
+            SoundManager.instance.PLaySE(DieSound);
             // if Enemy dies, player get scores.
             Player playerLogic = player.GetComponent<Player>();
             // Enemy Score can set from the Prefabs
@@ -385,6 +399,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyName == "L")
         {
+            SoundManager.instance.PLaySE(ShootSound);
             //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
             // GameObject bullet = Instantiate(EnemyBulletA, transform.position, transform.rotation);
             GameObject bullet = objectPooling.MakeObject("EnemyBulletA");
@@ -400,6 +415,7 @@ public class Enemy : MonoBehaviour
         }
         else if (enemyName == "M") // shoot 2 kinds of bullets
         {
+            SoundManager.instance.PLaySE(ShootSound);
             //generate bullets, Instantiate(Prefab, Position where creates, Rotation)
             //GameObject bulletR = Instantiate(EnemyBulletB, transform.position + Vector3.right*0.3f, transform.rotation);
             GameObject bulletR = objectPooling.MakeObject("EnemyBulletB");

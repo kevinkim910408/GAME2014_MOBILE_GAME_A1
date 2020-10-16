@@ -153,6 +153,8 @@ MonoBehaviour:
   patternIndex: 0
   currentPatternCount: 0
   maxPatternCount: 
+  ShootSound: EnemyShoot
+  DieSound: EnemyDie1
 --- !u!1001 &6684127187914471669
 PrefabInstance:
   m_ObjectHideFlags: 0

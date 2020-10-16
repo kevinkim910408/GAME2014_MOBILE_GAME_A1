@@ -170,3 +170,5 @@ MonoBehaviour:
   patternIndex: -1
   currentPatternCount: 0
   maxPatternCount: 0200000003000000630000000a000000
+  ShootSound: EnemyShoot
+  DieSound: EnemyDie1
