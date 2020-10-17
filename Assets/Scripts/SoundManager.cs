@@ -24,7 +24,6 @@ public class Sound
     public AudioClip audioClip;
 }
 
-
 public class SoundManager : MonoBehaviour
 {
     #region Variables

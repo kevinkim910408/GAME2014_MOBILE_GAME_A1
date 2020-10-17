@@ -6,25 +6,31 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Enmey.cs
-/// Date last Modified: 2020-10-13
+/// Date last Modified: 2020-10-17
 /// Program description
 ///  - This script is only for enemies. It contains enemies hp, and movespeed. Also contains enemies sprites to change when enemies are hit by player.
 ///  - if Enemies and the bullets hit the border --> destroy.
 ///  - Enmey can fire bullets to player
+///  - Enemy can be hit by player
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: inline comments + make code looks clear, Enmey can fire
 /// 2020-10-12: Enemy drops items
 /// 2020-10-13: Added functions about Boss
+/// 2020-10-17: Edit Internal Documentation - Add Headers and Inline Comments
 /// </summary>
 /// 
 public class Enemy : MonoBehaviour
 {
     #region Variables
+    [Header("Basic Stats")]
     // Basic stats for the enemies
     public float moveSpeed;
     public int hp;
+    // Enemy's score
+    public int enemyScore;
+
 
     // Components
     SpriteRenderer spriteRenderer;
@@ -45,7 +51,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject itemCoin;
 
-
     //delay Enemy's firing
     [SerializeField]
     float maxReloadingTime = 2.0f;
@@ -57,9 +62,6 @@ public class Enemy : MonoBehaviour
 
     // Fire to player
     public GameObject player;
-
-    // Enemy's score
-    public int enemyScore;
 
     public ObjectPooling objectPooling;
 

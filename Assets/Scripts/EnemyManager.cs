@@ -9,15 +9,17 @@ using System.IO;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: EnmeyManager.cs
-/// Date last Modified: 2020-10-14
+/// Date last Modified: 2020-10-17
 /// Program description
 ///  - Managing enemies' spawn and stages
+///  - Managing player spawning
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
 /// 2020-10-07: Add more Enemy spawn place, inline comments, make code looks clear, removed unnecessary codes
 /// 2020-10-12: Object Pooling, spawning enemies with text file, no more random generation
 /// 2020-10-14: manage stage
+/// 2020-10-17: Edit Internal Documentation - Add Headers and Inline Comments
 /// </summary>
 /// 
 public class EnemyManager : MonoBehaviour
@@ -91,31 +93,6 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
     #region Custom_Method
-
-    //// manage stage method - fail
-    //public void StageStart()
-    //{
-    //    // stage ui
-    //    stageStartAnim.SetTrigger("On");
-
-    //    // enemy spawn file read
-    //    ReadSpawnFile();
-
-    //    // fade in
-    //}
-    //public void StageEnd()
-    //{
-    //    // clear stage ui 
-    //    stageClearAnim.SetTrigger("On");
-    //    //stage number increase
-    //    stage++;
-
-    //    // fade out
-
-    //    // re locate player's position
-    //}
-
-
     void ReadSpawnFile()
     {
         // initialize

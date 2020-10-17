@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: Die.cs
-/// Date last Modified: 2020-10-16
+/// Date last Modified: 2020-10-17
 /// Program description
 ///  - managing player's after death.
-///  - UI appear when user press space key. --> will change to when player die.
-///  - Button - back to main menu
+///  - When Player die, a die canvase shows up
+///  - Button - Back to main menu
+///           - Retry
 ///  
 /// Revision History
 /// 2020-09-23: add Internal Documentation
@@ -19,6 +20,7 @@ using UnityEngine.SceneManagement;
 /// 2020-10-07: inline comments, make code looks clear, removed unnecessary codes, 
 /// 2020-10-07: only use for options after die.
 /// 2020-10-16: turn off game scene background music when player move to main menu
+/// 2020-10-17: Edit Internal Documentation - Add Headers and Inline Comments
 /// </summary>
 
 public class Die : MonoBehaviour

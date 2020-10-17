@@ -6,22 +6,26 @@ using UnityEngine;
 /// Name: Junho Kim
 /// Student#: 101136986
 /// The Source file name: BackgroundScroller.cs
-/// Date last Modified: 2020-10-12
+/// Date last Modified: 2020-10-17
 /// Program description
 ///  - Background Scrolling
 ///  
 /// Revision History
 /// 2020-10-12: Made script, background scrolling
+/// 2020-10-17: Edit Internal Documentation - Add Headers and Inline Comments
 /// </summary>
-/// 
 
 public class BackgroundScroller : MonoBehaviour
 {
     #region Variables
     // background moving speed
+
+    [Header("Speed")]
     [SerializeField]
     float backgroundSpeed;
 
+
+    [Header("Positions")]
     // Reset Position
     [SerializeField]
     float positionX;
